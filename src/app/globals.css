@@ -1,15 +1,73 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Integral_CF/Webfont/IntegralCF-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Integral_CF/Webfont/IntegralCF-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Integral_CF/Webfont/IntegralCF-Bold.woff2") format("woff2"),
+    url("../assets/fonts/Integral_CF/Webfont/IntegralCF-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Integral_CF/Webfont/IntegralCF-Heavy.woff2") format("woff2"),
+    url("../assets/fonts/Integral_CF/Webfont/IntegralCF-Heavy.woff") format("woff");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Integral_CF/Webfont/IntegralCF-RegularOblique.woff2") format("woff2"),
+    url("../assets/fonts/Integral_CF/Webfont/IntegralCF-RegularOblique.woff") format("woff");
+  font-style: oblique;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2") format("woff2"),
+    url("../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff") format("woff");
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-VariableItalic.woff2") format("woff2"),
+    url("../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-VariableItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 300 900;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-integral: "Integral CF", "Arial Black", "Segoe UI", sans-serif;
+  --font-satoshi: "Satoshi", Inter, "Segoe UI", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-satoshi);
+  --font-heading: var(--font-integral);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +80,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-satoshi), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-integral), sans-serif;
+}
+
+@utility font-integral {
+  font-family: var(--font-integral), sans-serif;
+}
+
+@utility font-satoshi {
+  font-family: var(--font-satoshi), sans-serif;
 }

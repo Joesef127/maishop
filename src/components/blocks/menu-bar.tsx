@@ -29,7 +29,7 @@ export function MenuBar({ onNavigate, isWithinHero, variant = "desktop" }: MenuB
 
     return (
         <NavigationMenu className="flex-1 max-w-max">
-            <NavigationMenuList className="flex flex-row gap-2">
+            <NavigationMenuList className="flex flex-row">
                 {navItems.map((item) => (
                     <NavigationMenuItem key={item.title} className={item.hasDropdown ? "relative" : ""}>
                         {item.hasDropdown ? (

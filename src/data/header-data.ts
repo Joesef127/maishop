@@ -21,35 +21,35 @@ export const navItems: NavItem[] = [
         dropdownItems: [
             {
                 title: "Men's Clothing",
-                href: "/shop/men",
+                href: "/shop/#men",
                 description: "T-shirts, shirts, jeans, and jackets for men.",
             },
             {
                 title: "Women's Clothing",
-                href: "/shop/women",
+                href: "/shop/#women",
                 description: "Dresses, tops, skirts, and knitwear for women.",
             },
             {
                 title: "Accessories",
-                href: "/shop/accessories",
+                href: "/shop/#accessories",
                 description: "Bags, belts, hats, and jewelry to complete your look.",
             },
             {
                 title: "Shoes",
-                href: "/shop/shoes",
+                href: "/shop/#shoes",
                 description: "Sneakers, boots, sandals, and formal footwear.",
             }
         ]
     },
     {
         title: "On Sale",
-        link: "/on-sale",
+        link: "/sales",
         description: "Check out our latest discounted products.",
         hasDropdown: false
     },
     {
         title: "New Arrivals",
-        link: "/new-arrivals",
+        link: "/arrivals",
         description: "Explore the freshest additions to our collection.",
         hasDropdown: false
     },

@@ -2,8 +2,9 @@ import React from "react";
 import type {Metadata} from "next";
 import "./globals.css";
 import {cn} from "@/lib/utils";
-import AnnouncementBar from "@/components/sections/announcement-bar";
+import AnnouncementBar from "@/components/layout/announcement-bar";
 import {ThemeProvider} from "@/providers/theme-provider";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
     title: "MAISHOP",
@@ -52,6 +53,7 @@ export default function RootLayout({
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <AnnouncementBar/>
                     {children}
+                    <Footer />
                 </ThemeProvider>
             </body>
         </html>

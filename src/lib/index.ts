@@ -19,6 +19,11 @@ import image17 from "@/assets/images/image17.jpg";
 import image18 from "@/assets/images/image18.jpg";
 import image19 from "@/assets/images/image19.jpg";
 import image20 from "@/assets/images/image20.jpg";
+import casual_wear from "@/assets/images/casual_wear.jpg";
+import formal_wear from "@/assets/images/formal_wear.jpg";
+import gym_girl from "@/assets/images/gym_girl.jpg";
+import gym_wear from "@/assets/images/gym_wear.jpg";
+import party_wear from "@/assets/images/party_wear.jpg";
 
 export const images = {
     hero_bg,
@@ -41,5 +46,10 @@ export const images = {
     image17,
     image18,
     image19,
-    image20
+    image20,
+    casual_wear,
+    formal_wear,
+    gym_girl,
+    gym_wear,
+    party_wear
 }

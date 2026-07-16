@@ -298,8 +298,7 @@ h6 {
   animation-delay: 2s !important;
 }
 
-/* testimonials scroll x animation*/
-/* src/app/globals.css */
+
 @layer utilities {
   @keyframes marquee {
     0% { transform: translateX(0); }
@@ -319,4 +318,19 @@ h6 {
       animation: none;
     }
   }
+}
+
+.zoom-card {
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.zoom-card img {
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+.zoom-card:hover img {
+  transform: scale(1.1);
 }

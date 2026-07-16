@@ -70,7 +70,7 @@ export default function StarRating({
                     </button>
                 );
             })}
-            <p className="ml-2 text-sm text-gray-500">{rating} / {maxStars}</p>
+            <p className="ml-2 text-xs sm:text-sm text-gray-500">{rating} / {maxStars}</p>
         </div>
     );
 }

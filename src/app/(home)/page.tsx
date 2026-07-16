@@ -3,12 +3,11 @@
 import HomeHeroSection from "@/components/sections/home/home-hero-section";
 import {images} from "@/lib";
 import Header from "@/components/layout/header";
-import React, {useEffect, useState, useRef} from "react";
+import {useEffect, useState, useRef} from "react";
 import NewArrivals from "@/components/sections/home/new-arrivals";
-import {allImages, newArrivalsData} from "@/data/home-data";
-import ProductCard from "@/components/blocks/product-card";
-import Image from "next/image";
 import TopSelling from "@/components/sections/home/top-selling";
+import Testimonials from "@/components/sections/home/testimonials";
+import BrowseStyle from "@/components/sections/home/browse-style";
 
 export default function Home() {
     const [hasScrolledPastHeroSection, setHasScrolledPastHeroSection] = useState(false);
@@ -70,6 +69,10 @@ export default function Home() {
             <NewArrivals/>
 
             <TopSelling />
+
+            <Testimonials />
+
+            <BrowseStyle />
 
             {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {

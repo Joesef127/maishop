@@ -298,3 +298,25 @@ h6 {
   animation-delay: 2s !important;
 }
 
+/* testimonials scroll x animation*/
+/* src/app/globals.css */
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.3333%); }
+  }
+
+  .animate-marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .pause-on-hover:hover {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 639px) {
+    .animate-marquee-track {
+      animation: none;
+    }
+  }
+}

@@ -8,7 +8,7 @@ interface StarRatingProps {
     maxStars?: number;
     readOnly?: boolean;
     onChange?: (rating: number) => void;
-    size?: number;
+    size?: string;
 }
 
 export default function StarRating({
@@ -16,7 +16,7 @@ export default function StarRating({
                                        maxStars = 5,
                                        readOnly = false,
                                        onChange,
-                                       size = 24,
+                                       size = "size-4",
                                    }: StarRatingProps) {
     const [hoverRating, setHoverRating] = useState<number | null>(null);
 
@@ -37,7 +37,7 @@ export default function StarRating({
 
     return (
         <div
-            className="flex items-center gap-1"
+            className="flex flex-wrap items-center gap-1"
             onMouseLeave={handleMouseLeave}
         >
             {Array.from({ length: maxStars }).map((_, i) => {
@@ -60,8 +60,8 @@ export default function StarRating({
                         aria-label={`Rate ${starValue} out of ${maxStars}`}
                     >
                         <Star
-                            size={size}
-                            className={`transition-all duration-150 ${
+                            // size={size}
+                            className={`transition-all duration-150 ${size} ${readOnly ? "" : "hover:scale-110 active:scale-95 transform"} ${
                                 isFilled
                                     ? "fill-amber-400 text-amber-400 drop-shadow-sm"
                                     : "text-zinc-300 dark:text-zinc-600 fill-transparent"

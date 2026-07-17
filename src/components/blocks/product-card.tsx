@@ -1,13 +1,25 @@
+"use client";
+
 import {useState} from 'react';
 import Image from "next/image";
 import StarRating from "./star-rating";
 import {ProductCardProps} from "@/data/home-data";
 import {Button} from "@/components/ui/button";
-import {Plus} from "lucide-react";
+import {Heart, Plus} from "lucide-react";
+import {useCartStore} from "@/stores/cart-store";
+import {useWishStore} from "@/stores/wish-store";
+import {RiHeartFill} from "@remixicon/react";
 
-
-const ProductCard = ({title, image, rating, price, discountPercentage, hasDiscount}: ProductCardProps) => {
+const ProductCard = (props: ProductCardProps) => {
+    const {title, image, rating, price, discountPercentage, hasDiscount} = props;
     const [mouseEntered, setMouseEntered] = useState(false);
+    const addCartItem = useCartStore(state => state.addItem);
+    const addWishItem = useWishStore(state => state.addWishItem);
+    const existsInWishList = useWishStore(state => state.existsInWishList);
+    const removeWishItem = useWishStore(state => state.removeWishItem);
+
+    const handleAddToCart = () => addCartItem(props);
+    const handleAddToWish = () => addWishItem(props);
 
     return (
         <div className="flex flex-col gap-4 relative">
@@ -16,16 +28,46 @@ const ProductCard = ({title, image, rating, price, discountPercentage, hasDiscou
                 <Image src={image} alt="Product Image" className="object-cover object-center w-full h-full"/>
 
                 <button title="Add to cart"
-                        className="sm:hidden absolute top-3 right-3 rounded-md border border-black/80 p-1 bg-black/80 text-white">
+                        className="sm:hidden absolute top-3 right-3 rounded-md p-1 bg-black/50 text-white"
+                        onClick={handleAddToCart}>
                     <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
                 </button>
+                {existsInWishList(props.id) ? (
+                    <button title="Remove from wishlist"
+                            className="sm:hidden absolute top-3 left-3 rounded-md p-1 bg-black/50 text-white"
+                            onClick={() => removeWishItem(props.id)}>
+                        <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600"/>
+                    </button>
+                ) : (
+                    <button title="Add to wishlist"
+                            className="sm:hidden absolute top-3 left-3 rounded-md p-1 bg-black/50 text-white"
+                            onClick={handleAddToWish}>
+                        <Heart className="w-4 sm:w-6 h-4 sm:h-6"/>
+                    </button>
+                )}
 
                 <div
-                    className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex ${mouseEntered ? 'opacity-100' : 'opacity-0'}`}>
-                    <Button variant="primary" size="custom"
-                            className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10">
-                        Add to Cart
-                    </Button>
+                    className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex gap-2 ${mouseEntered ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="grid grid-cols-1 grid-rows-2 gap-6">
+                        <Button variant="primary" size="lg"
+                                className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                                onClick={handleAddToCart}>
+                            Add to Cart
+                        </Button>
+                        {existsInWishList(props.id) ? (
+                            <Button variant="primary" size="lg"
+                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                                    onClick={() => removeWishItem(props.id)}>
+                                Remove from Wishlist
+                            </Button>
+                        ) : (
+                            <Button variant="primary" size="lg"
+                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                                    onClick={handleAddToWish}>
+                                Add to Wishlist
+                            </Button>
+                        )}
+                    </div>
                 </div>
             </figure>
 

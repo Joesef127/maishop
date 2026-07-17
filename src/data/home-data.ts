@@ -22,7 +22,7 @@ export interface ReviewCardProps {
 
 export const newArrivalsData: ProductCardProps[] = [
     {
-        id: crypto.randomUUID(),
+        id: "product-tshirt-tape-details",
         title: "T-shirt with Tape Details",
         image: images.image15,
         rating: 4,
@@ -30,7 +30,7 @@ export const newArrivalsData: ProductCardProps[] = [
         hasDiscount: false,
     },
     {
-        id: crypto.randomUUID(),
+        id: "product-skinny-fit-jeans",
         title: "Skinny Fit Jeans",
         image: images.image14,
         rating: 3,
@@ -39,7 +39,7 @@ export const newArrivalsData: ProductCardProps[] = [
         hasDiscount: true,
     },
     {
-        id: crypto.randomUUID(),
+        id: "product-checkered-shirt",
         title: "Checkered Shirt",
         image: images.image13,
         rating: 4,
@@ -47,7 +47,7 @@ export const newArrivalsData: ProductCardProps[] = [
         hasDiscount: false,
     },
     {
-        id: crypto.randomUUID(),
+        id: "product-sleeve-striped-tshirt",
         title: "Sleeve Striped T-Shirt",
         image: images.image12,
         rating: 4,
@@ -59,7 +59,7 @@ export const newArrivalsData: ProductCardProps[] = [
 
 export const topSellingData: ProductCardProps[] = [
     {
-        id: crypto.randomUUID(),
+        id: "product-vertical-striped-shirt",
         title: "Vertical Striped Shirt",
         image: images.image5,
         rating: 5.0,
@@ -68,7 +68,7 @@ export const topSellingData: ProductCardProps[] = [
         hasDiscount: true,
     },
     {
-        id: crypto.randomUUID(),
+        id: "product-courage-graphic-tshirt",
         title: "Courage Graphic T-Shirt",
         image: images.image6,
         rating: 4.0,
@@ -76,7 +76,7 @@ export const topSellingData: ProductCardProps[] = [
         hasDiscount: false,
     },
     {
-        id: crypto.randomUUID(),
+        id: "product-loose-fit-bermuda-shorts",
         title: "Loose Fit Bermuda Shorts",
         image: images.image7,
         rating: 3.0,
@@ -84,7 +84,7 @@ export const topSellingData: ProductCardProps[] = [
         hasDiscount: false,
     },
     {
-        id: crypto.randomUUID(),
+        id: "product-faded-skinny-jeans",
         title: "Faded Skinny Jeans",
         image: images.image8,
         rating: 4,
@@ -95,7 +95,7 @@ export const topSellingData: ProductCardProps[] = [
 
 export const testimonialsData: ReviewCardProps[] = [
     {
-        id: crypto.randomUUID(),
+        id: "review-sarah-m-2023-08-14",
         name: "Sarah M.",
         rating: 5,
         review: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.",
@@ -103,7 +103,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 14, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-alex-k-2023-08-15",
         name: "Alex K.",
         rating: 5,
         review: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.",
@@ -111,7 +111,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 15, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-james-l-2023-08-16",
         name: "James L.",
         rating: 5,
         review: "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.",
@@ -119,7 +119,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 16, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-michael-b-2023-08-17",
         name: "Michael B.",
         rating: 5,
         review: "The fit on the skinny jeans is absolutely perfect. Usually, I have to get my pants tailored, but these fit right out of the box. Super fast shipping too!",
@@ -127,7 +127,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 17, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-liam-k-2023-08-18",
         name: "Liam K.",
         rating: 4,
         review: "This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks volumes about the designer's skill. It's like wearing a piece of art.",
@@ -135,7 +135,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 18, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-emma-r-2023-08-19",
         name: "Emma R.",
         rating: 5,
         review: "Customer service was incredibly helpful when I needed to swap a size for my checkered shirt. The replacement arrived within two days. Highly recommend!",
@@ -143,7 +143,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 19, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-olivia-w-2023-08-20",
         name: "Olivia W.",
         rating: 4,
         review: "Great selection of summer wear. The materials are breathable and light, perfect for hot weather. Will definitely be placing another order soon.",
@@ -151,7 +151,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 20, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-daniel-t-2023-08-21",
         name: "Daniel T.",
         rating: 5,
         review: "The price point for this level of quality is unbeatable. I've washed my graphic tees multiple times now, and the prints haven't faded or cracked at all.",
@@ -159,7 +159,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 21, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-sophia-l-2023-08-22",
         name: "Sophia L.",
         rating: 4,
         review: "Love the minimalist packaging and the overall brand vibe. The clothes feel premium, and the size guide on the website was 100% accurate.",
@@ -167,7 +167,7 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 22, 2023",
     },
     {
-        id: crypto.randomUUID(),
+        id: "review-ethan-j-2023-08-23",
         name: "Ethan J.",
         rating: 5,
         review: "Ordered the vertical striped shirt and got so many compliments on my first day wearing it. True to size and matches the product pictures perfectly.",
@@ -175,26 +175,3 @@ export const testimonialsData: ReviewCardProps[] = [
         date: "August 23, 2023",
     },
 ];
-
-// export const allImages: StaticImageData[] = [
-//     images.image1,
-//     images.image2,
-//     images.image3,
-//     images.image4,
-//     images.image5,
-//     images.image6,
-//     images.image7,
-//     images.image8,
-//     images.image9,
-//     images.image10,
-//     images.image11,
-//     images.image12,
-//     images.image13,
-//     images.image14,
-//     images.image15,
-//     images.image16,
-//     images.image17,
-//     images.image18,
-//     images.image19,
-//     images.image20,
-// ]

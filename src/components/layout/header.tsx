@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react";
 import {MenuBar} from "@/components/blocks/menu-bar";
 import SearchBar from "@/components/blocks/search-bar";
 import {ShoppingCartIcon, UserIcon, HeartIcon, Menu} from "lucide-react";
@@ -14,10 +15,12 @@ import {
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {navigationMenuTriggerStyle} from "@/components/ui/navigation-menu";
-import {RiArrowDownSLine} from "@remixicon/react";
-import * as React from "react";
+import {useCartStore} from "@/stores/cart-store";
+import {useWishStore} from "@/stores/wish-store";
 
 const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boolean }) => {
+    const cartCount = useCartStore((state) => state.totalItems());
+    const wishListCount = useWishStore((state) => state.totalItems());
     const [open, setOpen] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
     const location = usePathname()
@@ -61,26 +64,26 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                             <div><MenuBar onNavigate={closeSheet} variant="mobile"/></div>
 
                             <div className="flex flex-col items-start gap-1">
-                                <Link href="/cart" onClick={closeSheet}
+                                <button onClick={closeSheet}
                                       className={cn(
                                           navigationMenuTriggerStyle(),
                                           "relative w-full h-auto justify-between py-2.5"
                                       )}
                                       aria-label="Shopping Cart">
                                 <span
-                                    className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[8px] bg-foreground">1</span>
+                                    className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{cartCount}</span>
                                     View cart <ShoppingCartIcon className="w-6 h-6"/>
-                                </Link>
-                                <Link href="/wishlist" onClick={closeSheet}
+                                </button>
+                                <button onClick={closeSheet}
                                       className={cn(
                                           navigationMenuTriggerStyle(),
                                           "relative w-full h-auto justify-between py-2.5"
                                       )}
                                       aria-label="Wishlist">
-                                <span
-                                    className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[8px] bg-foreground">13</span>
+                                    {wishListCount > 0 && <span
+                                        className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{wishListCount}</span>}
                                     Wish List <HeartIcon className="w-6 h-6"/>
-                                </Link>
+                                </button>
                                 <Link href="/account" onClick={closeSheet}
                                       className={cn(
                                           navigationMenuTriggerStyle(),
@@ -114,17 +117,21 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                     {/*    action buttons*/}
                     <div className="flex items-center gap-3">
                         <ToggleTheme isWithinHero={isWithinHeroSection}/>
-                        <Link href="/cart" aria-label="Shopping Cart" title="Shopping Cart" className="relative">
-                            <span
-                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[8px] bg-background">13</span>
+                        <button aria-label="Shopping Cart" title="Shopping Cart" className="relative">
+                            {cartCount > 0 && (
+                                <span
+                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{cartCount}</span>
+                            )}
                             <ShoppingCartIcon
                                 className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
-                        </Link>
-                        <Link href="/wishlist" aria-label="Wishlist" title="Wishlist" className="relative">
-                            <span
-                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[8px] bg-background">13</span>
+                        </button>
+                        <button aria-label="Wishlist" title="Wishlist" className="relative">
+                            {wishListCount > 0 && (
+                                <span
+                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{wishListCount}</span>
+                            )}
                             <HeartIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
-                        </Link>
+                        </button>
                         <Link href="/account" aria-label="User Account" title="User Account">
                             <UserIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
                         </Link>

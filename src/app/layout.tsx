@@ -1,5 +1,5 @@
 import React from "react";
-import type {Metadata} from "next";
+import type {Metadata, Viewport} from "next";
 import "./globals.css";
 import {cn} from "@/lib/utils";
 import AnnouncementBar from "@/components/layout/announcement-bar";
@@ -36,6 +36,9 @@ export const metadata: Metadata = {
         creator: "@maishop",
     },
     manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
     themeColor: [
         {media: "(prefers-color-scheme: light)", color: "white"},
         {media: "(prefers-color-scheme: dark)", color: "black"},

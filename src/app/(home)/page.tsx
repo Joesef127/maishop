@@ -74,13 +74,6 @@ export default function Home() {
 
             <Testimonials />
 
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {
-                    allImages.map((image, index) => (
-                        <Image key={index} src={image} alt="Product Image" className="object-cover object-center w-full h-full"/>
-                    ))
-                }
-            </div> */}
         </main>
     );
 }

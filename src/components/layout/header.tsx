@@ -23,6 +23,7 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
     const wishListCount = useWishStore((state) => state.totalItems());
     const [open, setOpen] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const location = usePathname()
 
     useEffect(() => {
@@ -30,6 +31,14 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
         onScroll();
         window.addEventListener("scroll", onScroll, {passive: true});
         return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    useEffect(() => {
+        const frameId = window.requestAnimationFrame(() => {
+            setMounted(true);
+        });
+
+        return () => window.cancelAnimationFrame(frameId);
     }, []);
 
     const isHomePage = location.toLowerCase() === "/";
@@ -70,8 +79,10 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                                           "relative w-full h-auto justify-between py-2.5"
                                       )}
                                       aria-label="Shopping Cart">
-                                <span
-                                    className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{cartCount}</span>
+                                {mounted && cartCount > 0 && (
+                                    <span
+                                        className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{cartCount}</span>
+                                )}
                                     View cart <ShoppingCartIcon className="w-6 h-6"/>
                                 </button>
                                 <button onClick={closeSheet}
@@ -80,7 +91,7 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                                           "relative w-full h-auto justify-between py-2.5"
                                       )}
                                       aria-label="Wishlist">
-                                    {wishListCount > 0 && <span
+                                    {mounted && wishListCount > 0 && <span
                                         className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{wishListCount}</span>}
                                     Wish List <HeartIcon className="w-6 h-6"/>
                                 </button>
@@ -118,7 +129,7 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                     <div className="flex items-center gap-3">
                         <ToggleTheme isWithinHero={isWithinHeroSection}/>
                         <button aria-label="Shopping Cart" title="Shopping Cart" className="relative">
-                            {cartCount > 0 && (
+                            {mounted && cartCount > 0 && (
                                 <span
                                 className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{cartCount}</span>
                             )}
@@ -126,7 +137,7 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                                 className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
                         </button>
                         <button aria-label="Wishlist" title="Wishlist" className="relative">
-                            {wishListCount > 0 && (
+                            {mounted && wishListCount > 0 && (
                                 <span
                                 className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{wishListCount}</span>
                             )}

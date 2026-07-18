@@ -6,7 +6,6 @@ const AnnouncementBar = () => {
     const location = usePathname()
 
     const isHomePage = location.toLowerCase() === "/";
-    console.log(isHomePage);
 
   return (
     <div className={`${isHomePage ? "bg-background" : "bg-foreground"} bg-opacity-70 py-2.5 px-2 text-center text-xs sm:text-sm`}>

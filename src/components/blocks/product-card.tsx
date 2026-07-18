@@ -50,19 +50,19 @@ const ProductCard = (props: ProductCardProps) => {
                     className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex gap-2 ${mouseEntered ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="grid grid-cols-1 grid-rows-2 gap-6">
                         <Button variant="primary" size="lg"
-                                className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                                className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm mx-auto cursor-pointer z-10"
                                 onClick={handleAddToCart}>
                             Add to Cart
                         </Button>
                         {existsInWishList(props.id) ? (
                             <Button variant="primary" size="lg"
-                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm mx-auto cursor-pointer z-10"
                                     onClick={() => removeWishItem(props.id)}>
                                 Remove from Wishlist
                             </Button>
                         ) : (
                             <Button variant="primary" size="lg"
-                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm mx-auto cursor-pointer z-10"
                                     onClick={handleAddToWish}>
                                 Add to Wishlist
                             </Button>

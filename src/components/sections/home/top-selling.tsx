@@ -8,7 +8,7 @@ const TopSelling = () => {
         <section className="flex items-center justify-center">
             <div className="container flex-flex-col items-center justify-center">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12">Top Selling</h1>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {
                         topSellingData.map((arr, index) => (
                             <ProductCard key={index} {...arr} />

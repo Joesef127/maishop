@@ -15,9 +15,12 @@ const ProductCard = (props: ProductCardProps) => {
     const [mouseEntered, setMouseEntered] = useState(false);
     const addCartItem = useCartStore(state => state.addItem);
     const cartItems = useCartStore(state => state.items);
-    const addWishItem = useWishStore(state => state.addWishItem);
-    const existsInWishList = useWishStore(state => state.existsInWishList);
-    const removeWishItem = useWishStore(state => state.removeWishItem);
+    const addWishItem = useWishStore((state) => state.addWishItem);
+    const removeWishItem = useWishStore((state) => state.removeWishItem);
+    const hasHydrated = useWishStore((state) => state.hasHydrated);
+    const isWishlisted = useWishStore((state) =>
+        state.items.some((item) => item.id === props.id)
+    );
 
     const handleAddToCart = () => {
         const alreadyInCart = cartItems.some(item => item.id === props.id);
@@ -30,17 +33,28 @@ const ProductCard = (props: ProductCardProps) => {
     };
 
     const handleAddToWish = () => {
-        if (existsInWishList(props.id)) {
-            toast.info("Already in wishlist", {description: `${props.title} is already in your wishlist.`});
+        if (!hasHydrated) return;
+
+        if (isWishlisted) {
+            toast.info("Already in wishlist", {
+                description: `${props.title} is already in your wishlist.`,
+            });
             return;
         }
+
         addWishItem(props);
-        toast.success("Added to wishlist", {description: `${props.title} was added to your wishlist.`});
+        toast.success("Added to wishlist", {
+            description: `${props.title} was added to your wishlist.`,
+        });
     };
 
     const handleRemoveFromWish = () => {
+        if (!hasHydrated) return;
+
         removeWishItem(props.id);
-        toast.success("Removed from wishlist", {description: `${props.title} was removed from your wishlist.`});
+        toast.success("Removed from wishlist", {
+            description: `${props.title} was removed from your wishlist.`,
+        });
     };
 
     return (
@@ -54,7 +68,7 @@ const ProductCard = (props: ProductCardProps) => {
                         onClick={handleAddToCart}>
                     <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
                 </button>
-                {existsInWishList(props.id) ? (
+                {hasHydrated && isWishlisted ? (
                     <button title="Remove from wishlist"
                             className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                             onClick={handleRemoveFromWish}>
@@ -76,7 +90,7 @@ const ProductCard = (props: ProductCardProps) => {
                                 onClick={handleAddToCart}>
                             <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
                         </button>
-                        {existsInWishList(props.id) ? (
+                        {hasHydrated && isWishlisted ? (
                             <button title="Remove from wishlist"
                                     className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                                     onClick={handleRemoveFromWish}>

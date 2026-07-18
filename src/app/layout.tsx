@@ -5,17 +5,26 @@ import {cn} from "@/lib/utils";
 import AnnouncementBar from "@/components/layout/announcement-bar";
 import {ThemeProvider} from "@/providers/theme-provider";
 import Footer from "@/components/layout/footer";
+import {Toaster} from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
     title: "MAISHOP",
-    description: "MAISHOP is a modern e-commerce platform that offers a seamless shopping experience with a wide range of products and services.",
-    keywords: ["e-commerce", "online shopping", "modern platform", "products", "services"],
+    description:
+        "MAISHOP is a modern e-commerce platform that offers a seamless shopping experience with a wide range of products and services.",
+    keywords: [
+        "e-commerce",
+        "online shopping",
+        "modern platform",
+        "products",
+        "services",
+    ],
     authors: [{name: "MAISHOP Team", url: "https://www.maishop.com"}],
     creator: "MAISHOP Team",
     publisher: "MAISHOP Inc.",
     openGraph: {
         title: "MAISHOP",
-        description: "MAISHOP is a modern e-commerce platform that offers a seamless shopping experience with a wide range of products and services.",
+        description:
+            "MAISHOP is a modern e-commerce platform that offers a seamless shopping experience with a wide range of products and services.",
         url: "https://www.maishop.com",
         siteName: "MAISHOP",
         images: [
@@ -31,7 +40,8 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title: "MAISHOP",
-        description: "MAISHOP is a modern e-commerce platform that offers a seamless shopping experience with a wide range of products and services.",
+        description:
+            "MAISHOP is a modern e-commerce platform that offers a seamless shopping experience with a wide range of products and services.",
         images: ["https://www.maishop.com/twitter-image.jpg"],
         creator: "@maishop",
     },
@@ -50,15 +60,28 @@ export default function RootLayout({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
-  return (
-      <html lang="en" className={cn("h-full antialiased")} suppressHydrationWarning={true}>
-      <body className="min-h-full flex flex-col relative z-40" suppressHydrationWarning={true}>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    <AnnouncementBar/>
-                    {children}
-                    <Footer />
-                </ThemeProvider>
-            </body>
+    return (
+        <html
+            lang="en"
+            className={cn("h-full antialiased")}
+            suppressHydrationWarning={true}
+        >
+        <body
+            className="min-h-full flex flex-col relative z-40"
+            suppressHydrationWarning={true}
+        >
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+            <AnnouncementBar/>
+            {children}
+            <Footer/>
+            <Toaster />
+        </ThemeProvider>
+        </body>
         </html>
     );
 }

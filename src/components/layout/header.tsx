@@ -17,6 +17,8 @@ import {cn} from "@/lib/utils";
 import {navigationMenuTriggerStyle} from "@/components/ui/navigation-menu";
 import {useCartStore} from "@/stores/cart-store";
 import {useWishStore} from "@/stores/wish-store";
+import {CartDrawer} from "@/components/layout/cart-drawer";
+import {WishlistDrawer} from "@/components/layout/wishlist-drawer";
 
 const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boolean }) => {
     const cartCount = useCartStore((state) => state.totalItems());
@@ -73,28 +75,33 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                             <div><MenuBar onNavigate={closeSheet} variant="mobile"/></div>
 
                             <div className="flex flex-col items-start gap-1">
-                                <button onClick={closeSheet}
-                                      className={cn(
-                                          navigationMenuTriggerStyle(),
-                                          "relative w-full h-auto justify-between py-2.5"
-                                      )}
-                                      aria-label="Shopping Cart">
-                                {mounted && cartCount > 0 && (
-                                    <span
-                                        className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{cartCount}</span>
-                                )}
-                                    View cart <ShoppingCartIcon className="w-6 h-6"/>
-                                </button>
-                                <button onClick={closeSheet}
-                                      className={cn(
-                                          navigationMenuTriggerStyle(),
-                                          "relative w-full h-auto justify-between py-2.5"
-                                      )}
-                                      aria-label="Wishlist">
-                                    {mounted && wishListCount > 0 && <span
-                                        className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{wishListCount}</span>}
-                                    Wish List <HeartIcon className="w-6 h-6"/>
-                                </button>
+                                <CartDrawer
+                                    trigger={
+                                    <button
+                                          className={cn(
+                                              navigationMenuTriggerStyle(),
+                                              "relative w-full h-auto justify-between py-2.5"
+                                          )}
+                                          aria-label="Shopping Cart">
+                                        {mounted && cartCount > 0 && (
+                                            <span
+                                                className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{cartCount}</span>
+                                        )}
+                                        View cart <ShoppingCartIcon className="w-6 h-6"/>
+                                    </button>
+                                } />
+                                <WishlistDrawer trigger={
+                                    <button
+                                          className={cn(
+                                              navigationMenuTriggerStyle(),
+                                              "relative w-full h-auto justify-between py-2.5"
+                                          )}
+                                          aria-label="Wishlist">
+                                        {mounted && wishListCount > 0 && <span
+                                            className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{wishListCount}</span>}
+                                        Wish List <HeartIcon className="w-6 h-6"/>
+                                    </button>
+                                } />
                                 <Link href="/account" onClick={closeSheet}
                                       className={cn(
                                           navigationMenuTriggerStyle(),
@@ -128,21 +135,25 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                     {/*    action buttons*/}
                     <div className="flex items-center gap-3">
                         <ToggleTheme isWithinHero={isWithinHeroSection}/>
-                        <button aria-label="Shopping Cart" title="Shopping Cart" className="relative">
-                            {mounted && cartCount > 0 && (
-                                <span
-                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{cartCount}</span>
-                            )}
-                            <ShoppingCartIcon
-                                className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
-                        </button>
-                        <button aria-label="Wishlist" title="Wishlist" className="relative">
-                            {mounted && wishListCount > 0 && (
-                                <span
-                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{wishListCount}</span>
-                            )}
-                            <HeartIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
-                        </button>
+                        <CartDrawer trigger={
+                            <button aria-label="Shopping Cart" title="Shopping Cart" className="relative">
+                                {mounted && cartCount > 0 && (
+                                    <span
+                                    className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{cartCount}</span>
+                                )}
+                                <ShoppingCartIcon
+                                    className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
+                            </button>
+                        } />
+                        <WishlistDrawer trigger={
+                            <button aria-label="Wishlist" title="Wishlist" className="relative">
+                                {mounted && wishListCount > 0 && (
+                                    <span
+                                    className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{wishListCount}</span>
+                                )}
+                                <HeartIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
+                            </button>
+                        } />
                         <Link href="/account" aria-label="User Account" title="User Account">
                             <UserIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
                         </Link>

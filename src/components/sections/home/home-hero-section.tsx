@@ -18,7 +18,7 @@ const HomeHeroSection = () => {
                     meticulously
                     crafted garments, designed to bring out your individuality and cater to your sense of
                     style.</p>
-                <Button variant="primary" size="custom">Shop Now</Button>
+                <Button variant="primary" size="custom" className="bg-background text-foreground hover:bg-foreground hover:text-background">Shop Now</Button>
                 <div className="flex items-center justify-start">
                     {
                         reputationFigures.map((figure, index) => (

@@ -36,21 +36,14 @@ export default function Home() {
                 {/* IMAGE LAYER, own overflow-hidden wrapper so Header sits outside any clipping ancestor */}
                 <div className="absolute inset-0 -z-10 overflow-hidden">
                     <div
-                        className="absolute inset-0 bg-cover bg-center animate-ken-burns"
+                        className="absolute -inset-7.5 bg-cover bg-right animate-ken-burns"
                         style={{backgroundImage: `url(${images.hero_bg.src})`}}
                     />
                 </div>
 
-                {/* AMBIENT MOVING BLOBS */}
-                <div
-                    className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-30 blur-3xl overflow-hidden">
-                    <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full animate-blob"/>
-                    <div
-                        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500 rounded-full animate-blob animation-delay-2s"/>
-                </div>
-
                 {/* Dark Overlay for readability */}
                 <div className="absolute inset-0 z-0 bg-black/40 pointer-events-none"/>
+
 
                 <div className="relative z-10 w-full h-full flex flex-col">
                     <HomeHeroSection />

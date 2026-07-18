@@ -4,22 +4,44 @@ import {useState} from 'react';
 import Image from "next/image";
 import StarRating from "./star-rating";
 import {ProductCardProps} from "@/data/home-data";
-import {Button} from "@/components/ui/button";
 import {Heart, Plus} from "lucide-react";
 import {useCartStore} from "@/stores/cart-store";
 import {useWishStore} from "@/stores/wish-store";
 import {RiHeartFill} from "@remixicon/react";
+import {toast} from "sonner";
 
 const ProductCard = (props: ProductCardProps) => {
     const {title, image, rating, price, discountPercentage, hasDiscount} = props;
     const [mouseEntered, setMouseEntered] = useState(false);
     const addCartItem = useCartStore(state => state.addItem);
+    const cartItems = useCartStore(state => state.items);
     const addWishItem = useWishStore(state => state.addWishItem);
     const existsInWishList = useWishStore(state => state.existsInWishList);
     const removeWishItem = useWishStore(state => state.removeWishItem);
 
-    const handleAddToCart = () => addCartItem(props);
-    const handleAddToWish = () => addWishItem(props);
+    const handleAddToCart = () => {
+        const alreadyInCart = cartItems.some(item => item.id === props.id);
+        addCartItem(props);
+        if (alreadyInCart) {
+            toast.success("Quantity updated", {description: `${props.title} quantity increased.`});
+        } else {
+            toast.success("Added to cart", {description: `${props.title} was added to your cart.`});
+        }
+    };
+
+    const handleAddToWish = () => {
+        if (existsInWishList(props.id)) {
+            toast.info("Already in wishlist", {description: `${props.title} is already in your wishlist.`});
+            return;
+        }
+        addWishItem(props);
+        toast.success("Added to wishlist", {description: `${props.title} was added to your wishlist.`});
+    };
+
+    const handleRemoveFromWish = () => {
+        removeWishItem(props.id);
+        toast.success("Removed from wishlist", {description: `${props.title} was removed from your wishlist.`});
+    };
 
     return (
         <div className="flex flex-col gap-4 relative">
@@ -28,19 +50,19 @@ const ProductCard = (props: ProductCardProps) => {
                 <Image src={image} alt="Product Image" className="object-cover object-center w-full h-full"/>
 
                 <button title="Add to cart"
-                        className="sm:hidden absolute top-3 right-3 rounded-md p-1 bg-black/50 text-white"
+                        className="sm:hidden absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
                         onClick={handleAddToCart}>
                     <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
                 </button>
                 {existsInWishList(props.id) ? (
                     <button title="Remove from wishlist"
-                            className="sm:hidden absolute top-3 left-3 rounded-md p-1 bg-black/50 text-white"
-                            onClick={() => removeWishItem(props.id)}>
+                            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
+                            onClick={handleRemoveFromWish}>
                         <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600"/>
                     </button>
                 ) : (
                     <button title="Add to wishlist"
-                            className="sm:hidden absolute top-3 left-3 rounded-md p-1 bg-black/50 text-white"
+                            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                             onClick={handleAddToWish}>
                         <Heart className="w-4 sm:w-6 h-4 sm:h-6"/>
                     </button>
@@ -49,23 +71,23 @@ const ProductCard = (props: ProductCardProps) => {
                 <div
                     className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex gap-2 ${mouseEntered ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="grid grid-cols-1 grid-rows-2 gap-6">
-                        <Button variant="primary" size="lg"
-                                className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                        <button title="Add to cart"
+                                className="absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
                                 onClick={handleAddToCart}>
-                            Add to Cart
-                        </Button>
+                            <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
+                        </button>
                         {existsInWishList(props.id) ? (
-                            <Button variant="primary" size="lg"
-                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
-                                    onClick={() => removeWishItem(props.id)}>
-                                Remove from Wishlist
-                            </Button>
+                            <button title="Remove from wishlist"
+                                    className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
+                                    onClick={handleRemoveFromWish}>
+                                <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600"/>
+                            </button>
                         ) : (
-                            <Button variant="primary" size="lg"
-                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm border border-background mx-auto cursor-pointer z-10"
+                            <button title="Add to wishlist"
+                                    className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                                     onClick={handleAddToWish}>
-                                Add to Wishlist
-                            </Button>
+                                <Heart className="w-4 sm:w-6 h-4 sm:h-6"/>
+                            </button>
                         )}
                     </div>
                 </div>

@@ -2,11 +2,6 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import {ProductCardProps} from "@/data/home-data";
 
-export interface WishItem extends ProductCardProps {
-    quantity: number;
-}
-
-// wish-store.ts
 interface WishState {
     items: ProductCardProps[];
     addWishItem: (product: ProductCardProps) => void;

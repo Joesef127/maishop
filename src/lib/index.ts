@@ -24,6 +24,10 @@ import formal_wear from "@/assets/images/formal_wear.jpg";
 import gym_girl from "@/assets/images/gym_girl.jpg";
 import gym_wear from "@/assets/images/gym_wear.jpg";
 import party_wear from "@/assets/images/party_wear.jpg";
+import maishop_black from "@/assets/images/maishop_black.png";
+import maishop_brown from "@/assets/images/maishop_brown.png";
+import maishop_white from "@/assets/images/maishop_white.png";
+import maishop_logo from "@/assets/images/maishop_logo.png";
 
 export const images = {
     hero_bg,
@@ -51,5 +55,9 @@ export const images = {
     formal_wear,
     gym_girl,
     gym_wear,
-    party_wear
+    party_wear,
+    maishop_black,
+    maishop_brown,
+    maishop_white,
+    maishop_logo,
 }

@@ -36,9 +36,8 @@ export const useWishStore = create<WishState>()(
         }),
         {
             name: "wish-list",
-            onRehydrateStorage: () => (state) => {
-                state?.setHasHydrated(true);
+            onRehydrateStorage: (state) => () => {
+                state.setHasHydrated(true);
             },
-        }
-    )
+        }    )
 );

@@ -48,7 +48,13 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
     0,
   );
 
-  const discount = appliedCode
+  const hasEligibleItems = items.some(
+    (item) => item.hasDiscount && item.discountPercentage,
+  );
+
+  const effectiveCode = appliedCode && hasEligibleItems ? appliedCode : null;
+
+  const discount = effectiveCode
     ? items.reduce((acc, item) => {
         if (item.hasDiscount && item.discountPercentage) {
           return (
@@ -61,10 +67,6 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
     : 0;
 
   const total = subtotal - discount;
-
-  const hasEligibleItems = items.some(
-    (item) => item.hasDiscount && item.discountPercentage,
-  );
 
   function handleApplyCode() {
     const trimmed = codeInput.trim();
@@ -183,19 +185,19 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
         {items.length > 0 && (
           <DrawerFooter className="border-t px-4 py-4 gap-3">
             {/* Discount code input */}
-            {!appliedCode ? (
+            {!effectiveCode ? (
               <div className=" flex items-center gap-2">
                 <div className="relative flex-1">
                   <Tag className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
                   <input
                     type="text"
+                    aria-label="Discount code"
                     placeholder="Discount code"
                     value={codeInput}
                     onChange={(e) => setCodeInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleApplyCode()}
                     className="w-full pl-8 pr-3 py-2 text-sm border rounded-full bg-background focus:outline-none focus:ring-1 focus:ring-foreground"
-                  />
-                </div>
+                  />                </div>
                 <Button
                   variant="primary"
                   size="lg"
@@ -210,7 +212,7 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
               <div className="flex items-center justify-between text-sm px-1">
                 <div className="flex items-center gap-1.5 text-green-600 dark:text-green-400">
                   <Tag className="w-3.5 h-3.5" />
-                  <span className="font-medium">{appliedCode}</span>
+                  <span className="font-medium">{effectiveCode}</span>
                 </div>
                 <button
                   onClick={handleRemoveCode}
@@ -279,6 +281,8 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                   <AlertDialogAction
                     onClick={() => {
                       clearCart();
+                      setAppliedCode(null);
+                      setCodeInput("");
                       toast.success("Cart cleared", {
                         description:
                           "All items have been removed from your cart.",

@@ -18,6 +18,7 @@ import {navigationMenuTriggerStyle} from "@/components/ui/navigation-menu";
 import {useCartStore} from "@/stores/cart-store";
 import {useWishStore} from "@/stores/wish-store";
 import {CartDrawer} from "@/components/layout/cart-drawer";
+import {WishlistDrawer} from "@/components/layout/wishlist-drawer";
 
 const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boolean }) => {
     const cartCount = useCartStore((state) => state.totalItems());
@@ -89,16 +90,18 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                                         View cart <ShoppingCartIcon className="w-6 h-6"/>
                                     </button>
                                 } />
-                                <button onClick={closeSheet}
-                                      className={cn(
-                                          navigationMenuTriggerStyle(),
-                                          "relative w-full h-auto justify-between py-2.5"
-                                      )}
-                                      aria-label="Wishlist">
-                                    {mounted && wishListCount > 0 && <span
-                                        className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{wishListCount}</span>}
-                                    Wish List <HeartIcon className="w-6 h-6"/>
-                                </button>
+                                <WishlistDrawer trigger={
+                                    <button
+                                          className={cn(
+                                              navigationMenuTriggerStyle(),
+                                              "relative w-full h-auto justify-between py-2.5"
+                                          )}
+                                          aria-label="Wishlist">
+                                        {mounted && wishListCount > 0 && <span
+                                            className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">{wishListCount}</span>}
+                                        Wish List <HeartIcon className="w-6 h-6"/>
+                                    </button>
+                                } />
                                 <Link href="/account" onClick={closeSheet}
                                       className={cn(
                                           navigationMenuTriggerStyle(),
@@ -142,13 +145,15 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                                     className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
                             </button>
                         } />
-                        <button aria-label="Wishlist" title="Wishlist" className="relative">
-                            {mounted && wishListCount > 0 && (
-                                <span
-                                className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{wishListCount}</span>
-                            )}
-                            <HeartIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
-                        </button>
+                        <WishlistDrawer trigger={
+                            <button aria-label="Wishlist" title="Wishlist" className="relative">
+                                {mounted && wishListCount > 0 && (
+                                    <span
+                                    className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">{wishListCount}</span>
+                                )}
+                                <HeartIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
+                            </button>
+                        } />
                         <Link href="/account" aria-label="User Account" title="User Account">
                             <UserIcon className={`w-4 sm:w-6 h-4 sm:h-6 ${isWithinHeroSection ? "text-white" : ""}`}/>
                         </Link>

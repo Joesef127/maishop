@@ -5,8 +5,7 @@ import {cn} from "@/lib/utils";
 import AnnouncementBar from "@/components/layout/announcement-bar";
 import {ThemeProvider} from "@/providers/theme-provider";
 import Footer from "@/components/layout/footer";
-import SplashCursor from "@/components/SplashCursor";
-import {useTheme} from "next-themes";
+import {Toaster} from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
     title: "MAISHOP",
@@ -80,6 +79,7 @@ export default function RootLayout({
             <AnnouncementBar/>
             {children}
             <Footer/>
+            <Toaster />
         </ThemeProvider>
         </body>
         </html>

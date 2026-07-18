@@ -28,19 +28,19 @@ const ProductCard = (props: ProductCardProps) => {
                 <Image src={image} alt="Product Image" className="object-cover object-center w-full h-full"/>
 
                 <button title="Add to cart"
-                        className="sm:hidden absolute top-3 right-3 rounded-md p-1 bg-black/50 text-white"
+                        className="sm:hidden absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
                         onClick={handleAddToCart}>
                     <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
                 </button>
                 {existsInWishList(props.id) ? (
                     <button title="Remove from wishlist"
-                            className="sm:hidden absolute top-3 left-3 rounded-md p-1 bg-black/50 text-white"
+                            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                             onClick={() => removeWishItem(props.id)}>
                         <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600"/>
                     </button>
                 ) : (
                     <button title="Add to wishlist"
-                            className="sm:hidden absolute top-3 left-3 rounded-md p-1 bg-black/50 text-white"
+                            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                             onClick={handleAddToWish}>
                         <Heart className="w-4 sm:w-6 h-4 sm:h-6"/>
                     </button>
@@ -49,23 +49,23 @@ const ProductCard = (props: ProductCardProps) => {
                 <div
                     className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex gap-2 ${mouseEntered ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="grid grid-cols-1 grid-rows-2 gap-6">
-                        <Button variant="primary" size="lg"
-                                className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm mx-auto cursor-pointer z-10"
+                        <button title="Add to cart"
+                                className="absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
                                 onClick={handleAddToCart}>
-                            Add to Cart
-                        </Button>
+                            <Plus className="w-4 sm:w-6 h-4 sm:h-6"/>
+                        </button>
                         {existsInWishList(props.id) ? (
-                            <Button variant="primary" size="lg"
-                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm mx-auto cursor-pointer z-10"
+                            <button title="Remove from wishlist"
+                                    className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                                     onClick={() => removeWishItem(props.id)}>
-                                Remove from Wishlist
-                            </Button>
+                                <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600"/>
+                            </button>
                         ) : (
-                            <Button variant="primary" size="lg"
-                                    className="bg-background hover:bg-foreground text-foreground hover:text-background text-sm mx-auto cursor-pointer z-10"
+                            <button title="Add to wishlist"
+                                    className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
                                     onClick={handleAddToWish}>
-                                Add to Wishlist
-                            </Button>
+                                <Heart className="w-4 sm:w-6 h-4 sm:h-6"/>
+                            </button>
                         )}
                     </div>
                 </div>

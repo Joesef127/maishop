@@ -74,8 +74,9 @@ const Header = ({hasScrolledPastHeroSection}: { hasScrolledPastHeroSection?: boo
                             <div><MenuBar onNavigate={closeSheet} variant="mobile"/></div>
 
                             <div className="flex flex-col items-start gap-1">
-                                <CartDrawer trigger={
-                                    <button onClick={closeSheet}
+                                <CartDrawer
+                                    trigger={
+                                    <button
                                           className={cn(
                                               navigationMenuTriggerStyle(),
                                               "relative w-full h-auto justify-between py-2.5"

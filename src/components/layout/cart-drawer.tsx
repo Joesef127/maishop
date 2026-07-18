@@ -47,13 +47,13 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
     return (
         <Drawer direction="right">
             <DrawerTrigger asChild>{trigger}</DrawerTrigger>
-            <DrawerContent className="flex flex-col h-full w-full max-w-sm ml-auto rounded-none">
+            <DrawerContent className="flex flex-col h-full w-full max-w-lg! ml-auto rounded-none">
                 <DrawerHeader className="border-b px-4 py-4">
-                    <DrawerTitle className="flex items-center gap-2 text-lg font-semibold">
+                    <DrawerTitle className="flex items-center gap-2 text-base sm:text-lg font-semibold">
                         <ShoppingCart className="w-5 h-5" />
                         Your Cart
                         {items.length > 0 && (
-                            <span className="ml-auto text-sm font-normal text-muted-foreground">
+                            <span className="ml-auto text-xs sm:text-sm capitalize! font-normal text-muted-foreground">
                                 {items.length} {items.length === 1 ? "item" : "items"}
                             </span>
                         )}
@@ -61,7 +61,7 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                 </DrawerHeader>
 
                 {/* Cart Items */}
-                <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+                <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar">
                     {items.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full gap-3 text-muted-foreground py-16">
                             <ShoppingCart className="w-12 h-12 opacity-30" />
@@ -74,7 +74,7 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                                 : item.price;
                             return (
                                 <div key={item.id} className="flex gap-3">
-                                    <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-muted shrink-0">
+                                    <div className="relative w-16 sm:w-20 h-16 sm:h-20 rounded-lg overflow-hidden bg-muted shrink-0">
                                         <Image
                                             src={item.image}
                                             alt={item.title}
@@ -84,7 +84,7 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                                     </div>
                                     <div className="flex flex-col flex-1 gap-1 min-w-0">
                                         <p className="text-sm font-medium leading-tight truncate">{item.title}</p>
-                                        <p className="text-sm font-semibold">
+                                        <p className="text-sm font-semibold truncate line-clamp">
                                             ${effectivePrice.toFixed(2)}
                                             {item.hasDiscount && item.discountPercentage && (
                                                 <span className="ml-1.5 text-xs text-muted-foreground line-through">
@@ -134,13 +134,15 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                         </div>
                         <Separator />
                         <DrawerClose asChild>
-                            <Button variant="primary" className="w-full" size="lg">
+                            <Button variant="primary" size="custom"
+                                    className="bg-transparent hover:bg-foreground text-foreground hover:text-background border border-foreground w-full">
                                 Proceed to Checkout
                             </Button>
                         </DrawerClose>
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <Button variant="outline" className="w-full" size="lg">
+                                <Button variant="outline" size="custom"
+                                        className="w-full rounded-full">
                                     Clear Cart
                                 </Button>
                             </AlertDialogTrigger>

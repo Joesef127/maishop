@@ -272,15 +272,15 @@ h6 {
 /* Ken Burns + Mouse Tracking combined */
 @keyframes kenburns {
   0% {
-    transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(1.05);
+    transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(1.10);
   }
   100% {
-    transform: translate3d(calc(var(--mx, 0px) - 15px), calc(var(--my, 0px) - 10px), 0) scale(1.15);
+    transform: translate3d(calc(var(--mx, 0px) - 15px), calc(var(--my, 0px) - 10px), 0) scale(1.25);
   }
 }
 
 .animate-ken-burns {
-  animation: kenburns 8s ease-out infinite alternate !important;
+  animation: kenburns 6s ease-out infinite alternate !important;
 }
 
 /* Ambient Blob Keyframes & Class */

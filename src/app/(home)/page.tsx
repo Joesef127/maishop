@@ -36,7 +36,7 @@ export default function Home() {
                 {/* IMAGE LAYER, own overflow-hidden wrapper so Header sits outside any clipping ancestor */}
                 <div className="absolute inset-0 -z-10 overflow-hidden">
                     <div
-                        className="absolute inset-0 bg-cover bg-center animate-ken-burns"
+                        className="absolute -inset-7.5 bg-cover bg-center animate-ken-burns"
                         style={{backgroundImage: `url(${images.hero_bg.src})`}}
                     />
                 </div>

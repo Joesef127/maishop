@@ -26,10 +26,11 @@ const Header = ({
     hasScrolledPastHeroSection?: boolean;
 }) => {
     const cartCount = useCartStore((state) => state.totalItems());
+    const cartHasHydrated = useCartStore((state) => state.hasHydrated);
     const wishListCount = useWishStore((state) => state.totalItems());
+    const wishHasHydrated = useWishStore((state) => state.hasHydrated);
     const [open, setOpen] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
-    const [mounted, setMounted] = useState(false);
     const location = usePathname();
 
     const {resolvedTheme} = useTheme();
@@ -42,13 +43,6 @@ const Header = ({
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    useEffect(() => {
-        const frameId = window.requestAnimationFrame(() => {
-            setMounted(true);
-        });
-
-        return () => window.cancelAnimationFrame(frameId);
-    }, []);
 
     const isHomePage = location.toLowerCase() === "/";
 
@@ -106,7 +100,7 @@ const Header = ({
                                             )}
                                             aria-label="Shopping Cart"
                                         >
-                                            {mounted && cartCount > 0 && (
+                                            {cartHasHydrated && cartCount > 0 && (
                                                 <span
                                                     className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">
                           {cartCount}
@@ -125,7 +119,7 @@ const Header = ({
                                             )}
                                             aria-label="Wishlist"
                                         >
-                                            {mounted && wishListCount > 0 && (
+                                            {wishHasHydrated && wishListCount > 0 && (
                                                 <span
                                                     className="absolute top-0 right-0 text-background py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-foreground">
                           {wishListCount}
@@ -194,7 +188,7 @@ const Header = ({
                                     title="Shopping Cart"
                                     className="relative"
                                 >
-                                    {mounted && cartCount > 0 && (
+                                    {cartHasHydrated && cartCount > 0 && (
                                         <span
                                             className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">
                       {cartCount}
@@ -213,7 +207,7 @@ const Header = ({
                                     title="Wishlist"
                                     className="relative"
                                 >
-                                    {mounted && wishListCount > 0 && (
+                                    {wishHasHydrated && wishListCount > 0 && (
                                         <span
                                             className="absolute -top-2 sm:-top-1 -right-2 sm:-right-1 text-foreground py-px sm:py-0.5 px-1 rounded-sm text-[10px] bg-background">
                       {wishListCount}

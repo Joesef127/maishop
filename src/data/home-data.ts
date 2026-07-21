@@ -9,6 +9,7 @@ export interface ProductCardProps {
     price: number;
     discountPercentage?: number;
     hasDiscount: boolean;
+    available?: boolean;
 }
 
 export interface ReviewCardProps {

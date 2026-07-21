@@ -1,12 +1,15 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { ProductCardProps } from "@/data/home-data";
+
+interface WishItemRef {
+    id: string;
+}
 
 interface WishState {
-    items: ProductCardProps[];
+    items: WishItemRef[];
     hasHydrated: boolean;
     setHasHydrated: (value: boolean) => void;
-    addWishItem: (product: ProductCardProps) => void;
+    addWishItem: (id: string) => void;
     removeWishItem: (id: string) => void;
     clearWishList: () => void;
     existsInWishList: (id: string) => boolean;
@@ -20,9 +23,9 @@ export const useWishStore = create<WishState>()(
             hasHydrated: false,
             setHasHydrated: (value) => set({ hasHydrated: value }),
 
-            addWishItem: (product) => {
-                if (get().items.some((i) => i.id === product.id)) return;
-                set({ items: [...get().items, product] });
+            addWishItem: (id) => {
+                if (get().items.some((i) => i.id === id)) return;
+                set({ items: [...get().items, { id }] });
             },
 
             removeWishItem: (id) =>
@@ -39,5 +42,6 @@ export const useWishStore = create<WishState>()(
             onRehydrateStorage: (state) => () => {
                 state.setHasHydrated(true);
             },
-        }    )
+        }
+    )
 );

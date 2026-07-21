@@ -25,6 +25,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useCartStore } from "@/stores/cart-store";
+import {useCartItems} from "@/hooks/use-cart-items";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 
@@ -35,7 +36,7 @@ interface CartDrawerProps {
 }
 
 export function CartDrawer({ trigger }: CartDrawerProps) {
-  const items = useCartStore((state) => state.items);
+  const items = useCartItems()
   const removeItem = useCartStore((state) => state.removeItem);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const clearCart = useCartStore((state) => state.clearCart);

@@ -25,6 +25,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Separator } from "@/components/ui/separator";
+import { useWishItems } from "@/hooks/use-wish-items";
 import { useWishStore } from "@/stores/wish-store";
 import { useCartStore } from "@/stores/cart-store";
 import StarRating from "@/components/blocks/star-rating";
@@ -35,20 +36,20 @@ interface WishlistDrawerProps {
 }
 
 export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
-  const items = useWishStore((state) => state.items);
+  const items = useWishItems();
   const removeWishItem = useWishStore((state) => state.removeWishItem);
   const clearWishList = useWishStore((state) => state.clearWishList);
   const addItem = useCartStore((state) => state.addItem);
 
   function handleAddToCart(item: (typeof items)[number]) {
-    addItem(item);
+    addItem(item.id);
     toast.success("Added to cart", {
       description: `${item.title} was added to your cart.`,
     });
   }
 
   function handleAddAllToCart() {
-    items.forEach((item) => addItem(item));
+    items.forEach((item) => addItem(item.id));
     toast.success("All items added to cart", {
       description: `${items.length} ${items.length === 1 ? "item" : "items"} added to your cart.`,
     });

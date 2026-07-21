@@ -218,9 +218,9 @@ h6 {
   padding-inline: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1440px) {
   .container {
-    padding-inline: 1.5rem;
+    max-width: 1380px;
   }
 }
 
@@ -233,6 +233,18 @@ h6 {
 @media (min-width: 1720px) {
   .container {
     max-width: 1660px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1760px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    max-width: 1920px;
   }
 }
 

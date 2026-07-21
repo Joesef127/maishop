@@ -29,7 +29,7 @@ export default function Home() {
     }, []);
 
     return (
-        <main className="relative space-y-20">
+        <main className="relative space-y-12 sm:space-y-20">
             <div ref={heroRef} className="relative min-h-screen w-full">
                 <Header hasScrolledPastHeroSection={hasScrolledPastHeroSection}/>
 

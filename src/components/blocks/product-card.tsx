@@ -67,7 +67,7 @@ const ProductCard = (props: ProductCardProps) => {
       <figure
         onMouseEnter={() => setMouseEntered(true)}
         onMouseLeave={() => setMouseEntered(false)}
-        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 max-w-100"
+        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 min-w-64 sm:min-w-96 xl:min-w-full"
       >
         <Image
           src={image}
@@ -142,24 +142,26 @@ const ProductCard = (props: ProductCardProps) => {
             {title}
           </p>
 
-          <div>
-            <StarRating rating={rating} readOnly={true} />
-          </div>
-
           <div className="flex flex-wrap items-center gap-3">
-            <p className="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold">
+            <p className="text-xs sm:text-sm md:text-lg lg:text-lg font-bold">
               ${price.toFixed(2)}
             </p>
+
             {hasDiscount && (
-              <p className="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-500 line-through">
+              <p className="text-xs sm:text-sm md:text-lg lg:text-lg font-bold text-gray-500 line-through">
                 ${(price / (1 - discountPercentage! / 100)).toFixed(2)}
               </p>
             )}
-            {hasDiscount && (
-              <p className="text-xs sm:text-sm bg-destructive/10 rounded-2xl px-2 py-1 font-normal text-red-500">
+            {/* {hasDiscount && (
+              <p className="text-xs lg:text-sm bg-destructive/10 rounded-2xl px-2 py-1 font-normal text-red-500">
                 -{discountPercentage}%
               </p>
-            )}
+            )} */}
+
+
+            <div>
+              <StarRating rating={rating} readOnly={true} />
+            </div>
           </div>
         </div>
       </div>

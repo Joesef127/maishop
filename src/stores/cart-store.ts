@@ -1,16 +1,20 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { ProductCardProps } from "@/data/home-data";
+import { getProductById } from "@/data/products-catalog";
 
 export interface CartItemRef {
     id: string;
     quantity: number;
+    title: string;
+    image: ProductCardProps["image"];
 }
 
 interface CartState {
     items: CartItemRef[];
     hasHydrated: boolean;
     setHasHydrated: (value: boolean) => void;
-    addItem: (id: string) => void;
+    addItem: (productOrId: ProductCardProps | string) => void;
     removeItem: (id: string) => void;
     updateQuantity: (id: string, quantity: number) => void;
     clearCart: () => void;
@@ -23,7 +27,10 @@ export const useCartStore = create<CartState>()(
             items: [],
             hasHydrated: false,
             setHasHydrated: (value) => set({ hasHydrated: value }),
-            addItem: (id) => {
+            addItem: (productOrId) => {
+                // Handle both full product object and just ID
+                const id = typeof productOrId === "string" ? productOrId : productOrId.id;
+
                 const existing = get().items.find((i) => i.id === id);
                 if (existing) {
                     set({
@@ -32,7 +39,10 @@ export const useCartStore = create<CartState>()(
                         ),
                     });
                 } else {
-                    set({ items: [...get().items, { id, quantity: 1 }] });
+                    const item = typeof productOrId === "string" ? getProductById(productOrId) : productOrId;
+                    if (item) {
+                        set({ items: [...get().items, { id, image: item.image, title: item.title, quantity: 1 }] });
+                    }
                 }
             },
             removeItem: (id) => set({ items: get().items.filter((i) => i.id !== id) }),

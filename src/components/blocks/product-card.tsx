@@ -22,12 +22,12 @@ const ProductCard = (props: ProductCardProps) => {
   const removeWishItem = useWishStore((state) => state.removeWishItem);
   const hasHydrated = useWishStore((state) => state.hasHydrated);
   const isWishlisted = useWishStore((state) =>
-    state.items.some((item) => item.id === props.id),
+      state.hasHydrated && state.items.some((item) => item.id === props.id),
   );
 
   const handleAddToCart = () => {
     const alreadyInCart = cartItems.some((item) => item.id === props.id);
-    addCartItem(props.id);
+    addCartItem(props);
     if (alreadyInCart) {
       toast.success("Quantity updated", {
         description: `${props.title} quantity increased.`,
@@ -49,7 +49,7 @@ const ProductCard = (props: ProductCardProps) => {
       return;
     }
 
-    addWishItem(props.id);
+    addWishItem(props.id, props.title, props.image);
     toast.success("Added to wishlist", {
       description: `${props.title} was added to your wishlist.`,
     });

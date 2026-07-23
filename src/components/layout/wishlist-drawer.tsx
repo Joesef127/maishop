@@ -48,13 +48,13 @@ export function WishlistDrawer({trigger}: WishlistDrawerProps) {
         });
     }
 
+    const availableItems = items.filter((item) => !item.unavailable);
+
     function handleAddAllToCart() {
-        const available = items.filter((i) => !i.unavailable);
-        available.forEach((item) => addItem(item));
+        availableItems.forEach((item) => addItem(item));
         toast.success("All items added to cart", {
-            description: `${available.length} ${available.length === 1 ? "item" : "items"} added to your cart.`,
-        });
-    }
+            description: `${availableItems.length} ${availableItems.length === 1 ? "item" : "items"} added to your cart.`,
+        });    }
 
     return (
         <Drawer direction="right">

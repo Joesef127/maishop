@@ -66,8 +66,7 @@ export default function StarRating({
                 className={`transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm
               ${readOnly ? "cursor-default" : "cursor-pointer hover:scale-110 active:scale-95 transform"}
             `}
-                aria-label={`Rate ${starValue} out of ${maxStars}`}
-              >
+                aria-label={isFilled ? "Remove rating" : "Rate"}              >
                 <Star
                   // size={size}
                   className={`transition-all duration-150 ${size} ${readOnly ? "" : "hover:scale-110 active:scale-95 transform"} ${

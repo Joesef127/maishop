@@ -10,10 +10,9 @@ export function getProductById(id: string): ProductCardProps | undefined {
 
 export function searchProducts(query: string, limit = 5): ProductCardProps[] {
     if (!query.trim()) return [];
-    const q = query.toLowerCase();
+    const q = query.trim().toLowerCase();
     return allProducts
         .filter((p) => p.title.toLowerCase().includes(q))
-        .slice(0, limit);
-}
+        .slice(0, limit);}
 
 export { allProducts };

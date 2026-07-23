@@ -25,6 +25,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useCartStore } from "@/stores/cart-store";
+import {useCartItems} from "@/hooks/use-cart-items";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 
@@ -35,7 +36,7 @@ interface CartDrawerProps {
 }
 
 export function CartDrawer({ trigger }: CartDrawerProps) {
-  const items = useCartStore((state) => state.items);
+  const items = useCartItems()
   const removeItem = useCartStore((state) => state.removeItem);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const clearCart = useCartStore((state) => state.clearCart);
@@ -119,65 +120,56 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
               <p className="text-sm">Your cart is empty</p>
             </div>
           ) : (
-            items.map((item) => {
-              return (
-                <div key={item.id} className="flex gap-3">
-                  <div className="relative w-16 sm:w-20 h-16 sm:h-20 rounded-lg overflow-hidden bg-muted shrink-0">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-1 gap-1 min-w-0">
-                    <p className="text-sm font-medium leading-tight truncate">
-                      {item.title}
-                    </p>
-                    <p className="text-sm font-semibold truncate line-clamp">
-                      ${item.price.toFixed(2)}
-                    </p>
-                    <div className="flex items-center gap-2 mt-auto">
-                      <div className="flex items-center border rounded-md">
+              items.map((item) => (
+                  <div key={item.id} className={`flex gap-3 ${item.unavailable ? "opacity-50" : ""}`}>
+                    <div className="relative w-16 sm:w-20 h-16 sm:h-20 rounded-lg overflow-hidden bg-muted shrink-0">
+                      <Image src={item.image} alt={item.title} fill className="object-cover object-center" />
+                    </div>
+                    <div className="flex flex-col flex-1 gap-1 min-w-0">
+                      <p className="text-sm font-medium leading-tight truncate">
+                        {item.title}
+                      </p>
+                      {item.unavailable ? (
+                          <p className="text-xs text-destructive font-medium">No longer available</p>
+                      ) : (
+                          <p className="text-sm font-semibold truncate">${item.price.toFixed(2)}</p>
+                      )}
+                      <div className="flex items-center gap-2 mt-auto">
+                        <div className={`flex items-center border rounded-md ${item.unavailable ? "pointer-events-none" : ""}`}>
+                          <button
+                              className="px-2 py-1 hover:bg-muted transition-colors"
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              aria-label="Decrease quantity"
+                              disabled={item.unavailable}
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="px-2 text-sm min-w-6 text-center">{item.quantity}</span>
+                          <button
+                              className="px-2 py-1 hover:bg-muted transition-colors"
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              aria-label="Increase quantity"
+                              disabled={item.unavailable}
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
                         <button
-                          className="px-2 py-1 hover:bg-muted transition-colors"
-                          onClick={() =>
-                            updateQuantity(item.id, item.quantity - 1)
-                          }
-                          aria-label="Decrease quantity"
+                            className="ml-auto text-muted-foreground hover:text-destructive transition-colors"
+                            onClick={() => {
+                              removeItem(item.id);
+                              toast.success("Item removed", {
+                                description: `${item.title} was removed from your cart.`,
+                              });
+                            }}
+                            aria-label="Remove item"
                         >
-                          <Minus className="w-3 h-3" />
-                        </button>
-                        <span className="px-2 text-sm min-w-6 text-center">
-                          {item.quantity}
-                        </span>
-                        <button
-                          className="px-2 py-1 hover:bg-muted transition-colors"
-                          onClick={() =>
-                            updateQuantity(item.id, item.quantity + 1)
-                          }
-                          aria-label="Increase quantity"
-                        >
-                          <Plus className="w-3 h-3" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                      <button
-                        className="ml-auto text-muted-foreground hover:text-destructive transition-colors"
-                        onClick={() => {
-                          removeItem(item.id);
-                          toast.success("Item removed", {
-                            description: `${item.title} was removed from your cart.`,
-                          });
-                        }}
-                        aria-label="Remove item"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
                     </div>
                   </div>
-                </div>
-              );
-            })
+              ))
           )}
         </div>
 

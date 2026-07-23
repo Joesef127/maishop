@@ -9,6 +9,7 @@ export interface ProductCardProps {
     price: number;
     discountPercentage?: number;
     hasDiscount: boolean;
+    available?: boolean;
 }
 
 export interface ReviewCardProps {
@@ -29,6 +30,7 @@ export const newArrivalsData: ProductCardProps[] = [
         price: 120,
         hasDiscount: false,
     },
+    
     {
         id: "product-skinny-fit-jeans",
         title: "Skinny Fit Jeans",
@@ -38,6 +40,7 @@ export const newArrivalsData: ProductCardProps[] = [
         discountPercentage: 20,
         hasDiscount: true,
     },
+
     {
         id: "product-checkered-shirt",
         title: "Checkered Shirt",
@@ -46,6 +49,7 @@ export const newArrivalsData: ProductCardProps[] = [
         price: 180,
         hasDiscount: false,
     },
+
     {
         id: "product-sleeve-striped-tshirt",
         title: "Sleeve Striped T-Shirt",

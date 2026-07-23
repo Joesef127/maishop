@@ -9,6 +9,7 @@ import { useCartStore } from "@/stores/cart-store";
 import { useWishStore } from "@/stores/wish-store";
 import { RiHeartFill } from "@remixicon/react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 const ProductCard = (props: ProductCardProps) => {
   const { title, image, rating, price, discountPercentage, hasDiscount } =
@@ -16,11 +17,12 @@ const ProductCard = (props: ProductCardProps) => {
   const [mouseEntered, setMouseEntered] = useState(false);
   const addCartItem = useCartStore((state) => state.addItem);
   const cartItems = useCartStore((state) => state.items);
+  const cartHasHydrated = useCartStore((state) => state.hasHydrated);
   const addWishItem = useWishStore((state) => state.addWishItem);
   const removeWishItem = useWishStore((state) => state.removeWishItem);
   const hasHydrated = useWishStore((state) => state.hasHydrated);
   const isWishlisted = useWishStore((state) =>
-    state.items.some((item) => item.id === props.id),
+      state.hasHydrated && state.items.some((item) => item.id === props.id),
   );
 
   const handleAddToCart = () => {
@@ -47,7 +49,7 @@ const ProductCard = (props: ProductCardProps) => {
       return;
     }
 
-    addWishItem(props);
+    addWishItem(props.id, props.title, props.image);
     toast.success("Added to wishlist", {
       description: `${props.title} was added to your wishlist.`,
     });
@@ -76,7 +78,9 @@ const ProductCard = (props: ProductCardProps) => {
         />
 
         <button
-          title="Add to cart"
+          title={cartHasHydrated ? "Add to cart" : "Loading cart"}
+          disabled={!cartHasHydrated}
+          aria-disabled={!cartHasHydrated}
           className="sm:hidden absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
           onClick={handleAddToCart}
         >
@@ -107,7 +111,9 @@ const ProductCard = (props: ProductCardProps) => {
         >
           <div className="grid grid-cols-1 grid-rows-2 gap-6">
             <button
-              title="Add to cart"
+              title={cartHasHydrated ? "Add to cart" : "Loading cart"}
+              disabled={!cartHasHydrated}
+              aria-disabled={!cartHasHydrated}
               className="absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
               onClick={handleAddToCart}
             >
@@ -138,9 +144,9 @@ const ProductCard = (props: ProductCardProps) => {
 
       <div className="flex flex-col justify-between gap-4">
         <div className="flex flex-col gap-2">
-          <p className="text-base sm:text-lg lg:text-xl font-bold capitalize">
+          <Link href={`/shop/${props.id}`} className="text-base sm:text-lg lg:text-xl hover:text-sidebar-primary font-bold capitalize">
             {title}
-          </p>
+          </Link>
 
           <div className="flex flex-wrap items-center gap-3">
             <p className="text-xs sm:text-sm md:text-lg lg:text-lg font-bold">

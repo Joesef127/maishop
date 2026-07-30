@@ -20,7 +20,7 @@ const findLabel = (segment: string) => {
 
 export function DynamicBreadcrumb() {
     const pathname = usePathname();
-    const segments = pathname.split("/").filter(Boolean);
+    const segments = pathname?.split("/").filter(Boolean) || [];
 
     if (segments.length === 0) return null;
 

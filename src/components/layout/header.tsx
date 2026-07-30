@@ -44,7 +44,7 @@ const Header = ({
     }, []);
 
 
-    const isHomePage = location.toLowerCase() === "/";
+    const isHomePage = location?.toLowerCase() === "/";
 
     const closeSheet = () => setOpen(false);
 

@@ -6,8 +6,8 @@ import {topSellingData} from "@/data/home-data";
 const TopSelling = () => {
     return (
         <section className="flex items-center justify-center">
-            <div className="container flex-flex-col items-center justify-center">
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12">Top Selling</h1>
+            <div className="container flex-flex-col items-center justify-center space-y-12">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-12">Top Selling</h1>
                 <div className="overflow-auto no-scrollbar">
                     <div className="overflow-x-scroll w-max xl:w-full grid grid-cols-4 gap-2">
 

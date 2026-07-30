@@ -1,4 +1,4 @@
-import { images } from "@/lib";
+import {products} from "@/lib";
 import {StaticImageData} from "next/image";
 
 export interface ProductCardProps {
@@ -25,7 +25,7 @@ export const newArrivalsData: ProductCardProps[] = [
     {
         id: "product-tshirt-tape-details",
         title: "T-shirt with Tape Details",
-        image: images.image15,
+        image: products.tshirt_with_tape_details2,
         rating: 4,
         price: 120,
         hasDiscount: false,
@@ -34,7 +34,7 @@ export const newArrivalsData: ProductCardProps[] = [
     {
         id: "product-skinny-fit-jeans",
         title: "Skinny Fit Jeans",
-        image: images.image14,
+        image: products.skinny_fit_jeans3,
         rating: 3,
         price: 240,
         discountPercentage: 20,
@@ -44,7 +44,7 @@ export const newArrivalsData: ProductCardProps[] = [
     {
         id: "product-checkered-shirt",
         title: "Checkered Shirt",
-        image: images.image13,
+        image: products.checkered_shirt3,
         rating: 4,
         price: 180,
         hasDiscount: false,
@@ -53,7 +53,7 @@ export const newArrivalsData: ProductCardProps[] = [
     {
         id: "product-sleeve-striped-tshirt",
         title: "Sleeve Striped T-Shirt",
-        image: images.image12,
+        image: products.sleeve_striped_tshirt2,
         rating: 4,
         price: 130,
         discountPercentage: 30,
@@ -65,7 +65,7 @@ export const topSellingData: ProductCardProps[] = [
     {
         id: "product-vertical-striped-shirt",
         title: "Vertical Striped Shirt",
-        image: images.image5,
+        image: products.vertical_striped_shirt,
         rating: 5.0,
         price: 212,
         discountPercentage: 20,
@@ -74,7 +74,7 @@ export const topSellingData: ProductCardProps[] = [
     {
         id: "product-courage-graphic-tshirt",
         title: "Courage Graphic T-Shirt",
-        image: images.image6,
+        image: products.courage_graphic_tshirt3,
         rating: 4.0,
         price: 145,
         hasDiscount: false,
@@ -82,7 +82,7 @@ export const topSellingData: ProductCardProps[] = [
     {
         id: "product-loose-fit-bermuda-shorts",
         title: "Loose Fit Bermuda Shorts",
-        image: images.image7,
+        image: products.loose_fit_bermuda_shorts,
         rating: 3.0,
         price: 80,
         hasDiscount: false,
@@ -90,7 +90,7 @@ export const topSellingData: ProductCardProps[] = [
     {
         id: "product-faded-skinny-jeans",
         title: "Faded Skinny Jeans",
-        image: images.image8,
+        image: products.faded_jeans3,
         rating: 4,
         price: 210,
         hasDiscount: false,

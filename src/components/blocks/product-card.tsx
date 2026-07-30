@@ -69,7 +69,7 @@ const ProductCard = (props: ProductCardProps) => {
       <figure
         onMouseEnter={() => setMouseEntered(true)}
         onMouseLeave={() => setMouseEntered(false)}
-        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 min-w-64 sm:min-w-96 xl:min-w-full"
+        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 min-w-64 max-w-68 sm:min-w-96 xl:min-w-full xl:max-w-full"
       >
         <Image
           src={image}

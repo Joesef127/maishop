@@ -38,6 +38,7 @@ const WriteReviewModal: React.FC<{ data: WriteReviewModalData }> = ({ data }) =>
       return;
     }
 
+    setError(null);
     data.onSubmit?.({ name: name.trim(), rating, review: review.trim() });
     toast.success("Review submitted", {
       description: "Thanks for sharing your feedback!",
@@ -46,7 +47,6 @@ const WriteReviewModal: React.FC<{ data: WriteReviewModalData }> = ({ data }) =>
     setName("");
     setReview("");
     setRating(0);
-    setError(null);
     closeModal();
   };
 
@@ -108,7 +108,7 @@ const WriteReviewModal: React.FC<{ data: WriteReviewModalData }> = ({ data }) =>
           />
         </div>
 
-        {error && <p className="text-xs text-destructive">{error}</p>}
+        {error && <p className="text-xs text-destructive" role="alert">{error}</p>}
 
         <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-1">
           <Button type="button" variant="outline" onClick={closeModal}>

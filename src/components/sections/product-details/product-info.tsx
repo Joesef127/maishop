@@ -168,7 +168,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
         
 <div className="py-3 flex flex-col gap-2.5">
           <span className="text-sm text-foreground/60 font-normal block">
-            Add to Wishlist
+            {isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
           </span>
           <button
             title={
@@ -178,18 +178,21 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                   : "Add to wishlist"
                 : "Loading wishlist"
             }
+            aria-label={
+              isWishlisted ? "Remove from wishlist" : "Add to wishlist"
+            }
+            aria-pressed={isWishlisted}
             disabled={!wishHasHydrated}
             aria-disabled={!wishHasHydrated}
             onClick={handleToggleWish}
-            className="shrink-0 rounded-full w-8 h-8 flex justify-center items-center bg-muted hover:bg-foreground/10 transition-colors"
+            className="shrink-0 rounded-full w-8 h-8 flex justify-center items-center bg-muted hover:bg-foreground/10 transition-colors disabled:opacity-60"
           >
             {isWishlisted ? (
               <RiHeartFill size={16} className="text-red-600" />
             ) : (
               <Heart size={16} className="text-foreground/80" />
             )}
-          </button>
-          </div>
+          </button>          </div>
 </div>
 
         <hr className="border-foreground/10 my-2" />

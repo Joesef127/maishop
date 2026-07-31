@@ -2,22 +2,20 @@ import React from 'react';
 import {Button} from "@/components/ui/button";
 import ProductCard from "@/components/blocks/product-card";
 import {newArrivalsData} from "@/data/home-data";
+import AutoScrollingList from "@/components/blocks/auto-scrolling-list";
 
 const NewArrivals = () => {
     return (
         <section className="flex items-center justify-center">
             <div className="container flex-flex-col items-center justify-center space-y-12">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-12">New Arrivals</h1>
-                <div className="overflow-auto no-scrollbar">
-                    <div className="overflow-x-scroll w-max xl:w-full grid grid-cols-4 gap-2">
-
-                        {
-                            newArrivalsData.map((arr, index) => (
-                                <ProductCard key={index} {...arr} />
-                            ))
-                        }
-                    </div>
-                </div>
+                <AutoScrollingList>
+                    {
+                        newArrivalsData.map((arr, index) => (
+                            <ProductCard key={index} {...arr} />
+                        ))
+                    }
+                </AutoScrollingList>
                 <div className="mt-9 w-full flex justify-center">
                     <Button variant="primary" size="custom"
                             className="bg-transparent hover:bg-foreground text-foreground hover:text-background border border-foreground mx-auto">

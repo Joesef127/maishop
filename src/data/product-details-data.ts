@@ -1,6 +1,6 @@
-import { ReviewCardProps } from "./home-data";
-import {StaticImageData} from "next/image";
-import {products} from "@/lib";
+import { ProductCardProps, ReviewCardProps } from "./home-data";
+import { StaticImageData } from "next/image";
+import { products } from "@/lib";
 
 export interface ColorOption {
     name: string;
@@ -32,11 +32,56 @@ export interface ProductDetails {
     faqs: FAQItem[];
 }
 
-export const  productDetailsData: Record<string, ProductDetails> = {
+export const suggestedData: ProductCardProps[] = [
+    {
+        id: "product-polo-with-contrast-trims",
+        title: "Polo with Contrast Trims",
+        image: products.polo_with_contrast_trims,
+        rating: 4,
+        price: 212,
+        hasDiscount: true,
+        discountPercentage: 15,
+    },
+
+    {
+        id: "product-gradient-graphic-tshirt",
+        title: "Gradient Graphic T-Shirt",
+        image: products.gradient_graphic_tshirt,
+        rating: 3.5,
+        price: 145,
+        hasDiscount: false,
+    },
+
+    {
+        id: "product-polo-with-tipping-details",
+        title: "Polo with Tipping Details",
+        image: products.polo_with_tipping_details,
+        rating: 4,
+        price: 180,
+        hasDiscount: false,
+    },
+
+    {
+        id: "product-black-striped-tshirt",
+        title: "Black Striped T-shirt",
+        image: products.tshirt_with_black_sleeves,
+        rating: 5,
+        price: 120,
+        discountPercentage: 30,
+        hasDiscount: true,
+    },
+];
+
+export const productDetailsData: Record<string, ProductDetails> = {
     "product-tshirt-tape-details": {
         id: "product-tshirt-tape-details",
         title: "T-shirt with Tape Details",
-        images: [products.tshirt_with_tape_details, products.tshirt_with_tape_details2, products.tshirt_with_tape_details3, products.tshirt_with_tape_details4],
+        images: [
+            products.tshirt_with_tape_details,
+            products.tshirt_with_tape_details2,
+            products.tshirt_with_tape_details3,
+            products.tshirt_with_tape_details4,
+        ],
         rating: 4,
         price: 120,
         description:
@@ -50,7 +95,8 @@ export const  productDetailsData: Record<string, ProductDetails> = {
         details: {
             material: "100% Premium Combed Cotton",
             fit: "Relaxed Fit",
-            careInstructions: "Machine wash cold, tumble dry low, do not bleach.",
+            careInstructions:
+                "Machine wash cold, tumble dry low, do not bleach.",
             features: [
                 "Unique tape accent detailing along the seams",
                 "Breathable, lightweight cotton fabric",
@@ -63,8 +109,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-1",
                 name: "Samantha D.",
                 rating: 4.5,
-                review:
-                    "I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt.",
+                review: "I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt.",
                 isVerified: true,
                 date: "August 14, 2023",
             },
@@ -72,8 +117,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-2",
                 name: "Alex M.",
                 rating: 4,
-                review:
-                    "The t-shirt exceeded my expectations! The colors are vibrant and the print quality is top-notch. Being a UI/UX designer myself, I'm quite picky about aesthetics, and this t-shirt definitely gets a thumbs up from me!",
+                review: "The t-shirt exceeded my expectations! The colors are vibrant and the print quality is top-notch. Being a UI/UX designer myself, I'm quite picky about aesthetics, and this t-shirt definitely gets a thumbs up from me!",
                 isVerified: true,
                 date: "August 15, 2023",
             },
@@ -81,8 +125,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-3",
                 name: "Ethan R.",
                 rating: 4.5,
-                review:
-                    "This t-shirt is a must-have for anyone who appreciates good design. The minimalist yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
+                review: "This t-shirt is a must-have for anyone who appreciates good design. The minimalist yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
                 isVerified: true,
                 date: "August 16, 2023",
             },
@@ -90,8 +133,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-4",
                 name: "Olivia P.",
                 rating: 4,
-                review:
-                    "As a UI/UX enthusiast, I value simplicity and functionality. This t-shirt not only represents those principles but also feels great to wear. It's evident that the designer poured their creativity into making this t-shirt stand out.",
+                review: "As a UI/UX enthusiast, I value simplicity and functionality. This t-shirt not only represents those principles but also feels great to wear. It's evident that the designer poured their creativity into making this t-shirt stand out.",
                 isVerified: true,
                 date: "August 17, 2023",
             },
@@ -99,8 +141,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-5",
                 name: "Liam K.",
                 rating: 4,
-                review:
-                    "This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and fashion.",
+                review: "This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and fashion.",
                 isVerified: true,
                 date: "August 18, 2023",
             },
@@ -108,8 +149,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-6",
                 name: "Ava H.",
                 rating: 4.5,
-                review:
-                    "I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter.",
+                review: "I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter.",
                 isVerified: true,
                 date: "August 19, 2023",
             },
@@ -118,20 +158,17 @@ export const  productDetailsData: Record<string, ProductDetails> = {
             {
                 id: "faq-1",
                 question: "How do I choose the correct size for this t-shirt?",
-                answer:
-                    "Our t-shirts are true to size with a slightly relaxed fit. If you prefer a tighter fit, we recommend ordering one size down.",
+                answer: "Our t-shirts are true to size with a slightly relaxed fit. If you prefer a tighter fit, we recommend ordering one size down.",
             },
             {
                 id: "faq-2",
                 question: "What is the return and exchange policy?",
-                answer:
-                    "We offer a 30-day hassle-free return or exchange policy for all unworn items with original tags intact.",
+                answer: "We offer a 30-day hassle-free return or exchange policy for all unworn items with original tags intact.",
             },
             {
                 id: "faq-3",
                 question: "Will the graphic print peel or fade after washing?",
-                answer:
-                    "No, we use high-grade screen printing and pre-shrunk cotton to ensure colors and prints remain vibrant through many washes.",
+                answer: "No, we use high-grade screen printing and pre-shrunk cotton to ensure colors and prints remain vibrant through many washes.",
             },
         ],
     },
@@ -140,7 +177,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-skinny-fit-jeans": {
         id: "product-skinny-fit-jeans",
         title: "Skinny Fit Jeans",
-        images: [products.skinny_fit_jeans, products.skinny_fit_jeans2, products.skinny_fit_jeans3, products.skinny_fit_jeans4],
+        images: [
+            products.skinny_fit_jeans,
+            products.skinny_fit_jeans2,
+            products.skinny_fit_jeans3,
+            products.skinny_fit_jeans4,
+        ],
         rating: 3,
         price: 240,
         description:
@@ -175,8 +217,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
             {
                 id: "faq-sfj-1",
                 question: "Do these jeans stretch out after wearing?",
-                answer:
-                    "The 2% elastane blend helps them retain shape while giving enough flex for all-day comfort.",
+                answer: "The 2% elastane blend helps them retain shape while giving enough flex for all-day comfort.",
             },
         ],
     },
@@ -185,7 +226,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-checkered-shirt": {
         id: "product-checkered-shirt",
         title: "Checkered Shirt",
-        images: [products.checkered_shirt, products.checkered_shirt2, products.checkered_shirt3, products.checkered_shirt4],
+        images: [
+            products.checkered_shirt,
+            products.checkered_shirt2,
+            products.checkered_shirt3,
+            products.checkered_shirt4,
+        ],
         rating: 4,
         price: 180,
         description:
@@ -219,8 +265,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
             {
                 id: "faq-cs-1",
                 question: "Is this shirt suitable for winter layering?",
-                answer:
-                    "Yes, the cotton flannel material makes it a great mid-layer over a tee during colder months.",
+                answer: "Yes, the cotton flannel material makes it a great mid-layer over a tee during colder months.",
             },
         ],
     },
@@ -229,7 +274,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-sleeve-striped-tshirt": {
         id: "product-sleeve-striped-tshirt",
         title: "Sleeve Striped T-Shirt",
-        images: [products.sleeve_striped_tshirt, products.sleeve_striped_tshirt2, products.sleeve_striped_tshirt3, products.sleeve_striped_tshirt4],
+        images: [
+            products.sleeve_striped_tshirt,
+            products.sleeve_striped_tshirt2,
+            products.sleeve_striped_tshirt3,
+            products.sleeve_striped_tshirt4,
+        ],
         rating: 4,
         price: 130,
         description:
@@ -266,7 +316,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-vertical-striped-shirt": {
         id: "product-vertical-striped-shirt",
         title: "Vertical Striped Shirt",
-        images: [products.vertical_striped_shirt, products.vertical_striped_shirt2, products.vertical_striped_shirt3, products.vertical_striped_shirt4],
+        images: [
+            products.vertical_striped_shirt,
+            products.vertical_striped_shirt2,
+            products.vertical_striped_shirt3,
+            products.vertical_striped_shirt4,
+        ],
         rating: 5.0,
         price: 212,
         description:
@@ -291,8 +346,7 @@ export const  productDetailsData: Record<string, ProductDetails> = {
                 id: "rev-vss-1",
                 name: "Ethan J.",
                 rating: 5,
-                review:
-                    "Got so many compliments on my first day wearing it. True to size!",
+                review: "Got so many compliments on my first day wearing it. True to size!",
                 isVerified: true,
                 date: "August 23, 2023",
             },
@@ -312,7 +366,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-courage-graphic-tshirt": {
         id: "product-courage-graphic-tshirt",
         title: "Courage Graphic T-Shirt",
-        images: [products.courage_graphic_tshirt, products.courage_graphic_tshirt2, products.courage_graphic_tshirt3, products.courage_graphic_tshirt4],
+        images: [
+            products.courage_graphic_tshirt,
+            products.courage_graphic_tshirt2,
+            products.courage_graphic_tshirt3,
+            products.courage_graphic_tshirt4,
+        ],
         rating: 4.0,
         price: 145,
         description:
@@ -340,7 +399,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-loose-fit-bermuda-shorts": {
         id: "product-loose-fit-bermuda-shorts",
         title: "Loose Fit Bermuda Shorts",
-        images: [products.loose_fit_bermuda_shorts, products.loose_fit_bermuda_shorts2, products.loose_fit_bermuda_shorts3, products.loose_fit_bermuda_shorts4],
+        images: [
+            products.loose_fit_bermuda_shorts,
+            products.loose_fit_bermuda_shorts2,
+            products.loose_fit_bermuda_shorts3,
+            products.loose_fit_bermuda_shorts4,
+        ],
         rating: 3.0,
         price: 80,
         description:
@@ -368,7 +432,12 @@ export const  productDetailsData: Record<string, ProductDetails> = {
     "product-faded-skinny-jeans": {
         id: "product-faded-skinny-jeans",
         title: "Faded Skinny Jeans",
-        images: [products.faded_jeans, products.faded_jeans2, products.faded_jeans3, products.faded_jeans4],
+        images: [
+            products.faded_jeans,
+            products.faded_jeans2,
+            products.faded_jeans3,
+            products.faded_jeans4,
+        ],
         rating: 4.5,
         price: 210,
         description:
@@ -388,4 +457,141 @@ export const  productDetailsData: Record<string, ProductDetails> = {
         reviews: [],
         faqs: [],
     },
+
+    // 9. polo-with-contrast-trims
+    "product-polo-with-contrast-trims": {
+        id: "product-polo-with-contrast-trims",
+        title: "Polo with Contrast Trims",
+        images: [
+            products.polo_with_contrast_trims,
+            products.polo_with_contrast_trims2,
+            products.polo_with_contrast_trims3,
+            products.polo_with_contrast_trims4,
+        ],
+        rating: 4.0,
+        price: 120,
+        description:
+            "Classic polo shirt featuring contrast trims on the collar and sleeves for a stylish touch.",
+        colors: [
+            { name: "White", hex: "#FFFFFF" },
+            { name: "Black", hex: "#000000" },
+        ],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+        details: {
+            material: "100% Cotton",
+            fit: "Regular Fit",
+            careInstructions: "Machine wash cold with like colors.",
+            features: [
+                "Contrast trims on collar and sleeves",
+                "Buttoned placket",
+                "Ribbed cuffs",
+            ],
+        },
+        reviews: [],
+        faqs: [],
+    },
+
+    // 10. gradient-graphic-tshirt
+    "product-gradient-graphic-tshirt": {
+        id: "product-gradient-graphic-tshirt",
+        title: "Gradient Graphic T-Shirt",
+        images: [
+            products.gradient_graphic_tshirt,
+            products.gradient_graphic_tshirt2,
+            products.gradient_graphic_tshirt3,
+            products.gradient_graphic_tshirt4,
+        ],
+        rating: 4.2,
+        price: 60,
+        description:
+            "Casual t-shirt featuring a gradient graphic print for a modern look.",
+        colors: [
+            { name: "Black to Gray", hex: "#2C2C2C" },
+            { name: "White to Blue", hex: "#5B708A" },
+        ],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+        details: {
+            material: "100% Cotton",
+            fit: "Regular Fit",
+            careInstructions: "Machine wash cold inside out.",
+            features: [
+                "Gradient graphic print",
+                "Crew neck",
+                "Short sleeves",
+            ],
+        },
+        reviews: [],
+        faqs: [],
+    },
+
+    // 11. polo-with-tipping-details
+    "product-polo-with-tipping-details": {
+        id: "product-polo-with-tipping-details",
+        title: "Polo with Tipping Details",
+        images: [
+            products.polo_with_tipping_details,
+            products.polo_with_tipping_details2,
+            products.polo_with_tipping_details3,
+            products.polo_with_tipping_details4,
+        ],
+        rating: 4.3,
+        price: 130,
+        description:
+            "Classic polo shirt featuring tipping details on the collar and sleeves for a refined look.",
+        colors: [
+            { name: "White", hex: "#FFFFFF" },
+            { name: "Navy", hex: "#001F3F" },
+        ],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+        details: {
+            material: "100% Cotton",
+            fit: "Regular Fit",
+            careInstructions: "Machine wash cold with like colors.",
+            features: [
+                "Tipping details on collar and sleeves",
+                "Buttoned placket",
+                "Ribbed cuffs",
+            ],
+        },
+        reviews: [],
+        faqs: [],
+    },
+
+
+    // 12. black-striped-tshirt
+    "product-black-striped-tshirt": {
+        id: "product-black-striped-tshirt",
+        title: "Black Striped T-Shirt",
+        images: [
+            products.tshirt_with_black_sleeves,
+            products.tshirt_with_black_sleeves2,
+            products.tshirt_with_black_sleeves3,
+            products.tshirt_with_black_sleeves4,
+        ],
+        rating: 4.1,
+        price: 55,
+        description:
+            "Casual black t-shirt featuring white stripes for a classic look.",
+        colors: [
+            { name: "Black with White Stripes", hex: "#000000" },
+        ],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+        details: {
+            material: "100% Cotton",
+            fit: "Regular Fit",
+            careInstructions: "Machine wash cold with like colors.",
+            features: [
+                "White stripes on black background",
+                "Crew neck",
+                "Short sleeves",
+            ],
+        },
+        reviews: [],
+        faqs: [],
+    },
+
+
+
+
+
 };

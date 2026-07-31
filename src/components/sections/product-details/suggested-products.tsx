@@ -1,8 +1,7 @@
 import React from 'react';
-import {Button} from "@/components/ui/button";
 import ProductCard from "@/components/blocks/product-card";
-import {newArrivalsData} from "@/data/home-data";
 import AutoScrollingList from "@/components/blocks/auto-scrolling-list";
+import {suggestedData} from "@/data/product-details-data";
 
 const SuggestedProducts = () => {
     return (
@@ -11,7 +10,7 @@ const SuggestedProducts = () => {
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center">You might also like</h1>
                 <AutoScrollingList>
                         {
-                            newArrivalsData.map((arr, index) => (
+                            suggestedData.map((arr, index) => (
                                 <ProductCard key={index} {...arr} />
                             ))
                         }

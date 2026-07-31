@@ -11,11 +11,18 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import {navItems} from "@/data/header-data";
+import { navItems } from "@/data/header-data";
+import { productDetailsData } from "@/data/product-details-data";
 
 const findLabel = (segment: string) => {
     const match = navItems.find((item) => item.link === `/${segment}`);
-    return match ? match.title : segment.replace(/-/g, " ");
+    if (match) return match.title;
+
+    // If the segment is a known product id, show its title instead of the raw id/slug.
+    const product = productDetailsData[segment];
+    if (product) return product.title;
+
+    return segment.replace(/-/g, " ");
 };
 
 export function DynamicBreadcrumb() {
@@ -37,16 +44,24 @@ export function DynamicBreadcrumb() {
                     const href = `/${segments.slice(0, index + 1).join("/")}`;
                     const isLast = index === segments.length - 1;
                     const label = findLabel(segment);
+                    const isProductLabel = Boolean(productDetailsData[segment]);
 
                     return (
                         <React.Fragment key={href}>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
                                 {isLast ? (
-                                    <BreadcrumbPage className="capitalize">{label}</BreadcrumbPage>
+                                    <BreadcrumbPage className={isProductLabel ? "" : "capitalize"}>
+                                        {label}
+                                    </BreadcrumbPage>
                                 ) : (
                                     <BreadcrumbLink asChild>
-                                        <Link href={href} className="capitalize">{label}</Link>
+                                        <Link
+                                            href={href}
+                                            className={isProductLabel ? "" : "capitalize"}
+                                        >
+                                            {label}
+                                        </Link>
                                     </BreadcrumbLink>
                                 )}
                             </BreadcrumbItem>

@@ -38,7 +38,7 @@ export const suggestedData: ProductCardProps[] = [
         title: "Polo with Contrast Trims",
         image: products.polo_with_contrast_trims,
         rating: 4,
-        price: 212,
+        price: 120,
         hasDiscount: true,
         discountPercentage: 15,
     },
@@ -47,8 +47,8 @@ export const suggestedData: ProductCardProps[] = [
         id: "product-gradient-graphic-tshirt",
         title: "Gradient Graphic T-Shirt",
         image: products.gradient_graphic_tshirt,
-        rating: 3.5,
-        price: 145,
+        rating: 4.2,
+        price: 60,
         hasDiscount: false,
     },
 
@@ -56,17 +56,17 @@ export const suggestedData: ProductCardProps[] = [
         id: "product-polo-with-tipping-details",
         title: "Polo with Tipping Details",
         image: products.polo_with_tipping_details,
-        rating: 4,
-        price: 180,
+        rating: 4.3,
+        price: 130,
         hasDiscount: false,
     },
 
     {
         id: "product-black-striped-tshirt",
-        title: "Black Striped T-shirt",
+        title: "Black Striped T-Shirt",
         image: products.tshirt_with_black_sleeves,
-        rating: 5,
-        price: 120,
+        rating: 4.1,
+        price: 55,
         discountPercentage: 30,
         hasDiscount: true,
     },
@@ -212,12 +212,25 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 isVerified: true,
                 date: "August 17, 2023",
             },
+            {
+                id: "review-sarah-l-2023-08-18",
+                name: "Sarah L.",
+                rating: 4,
+                review: "These skinny fit jeans are great for everyday wear. The stretch denim makes them comfortable, and they hold their shape well after washing.",
+                isVerified: true,
+                date: "August 18, 2023",
+            },
         ],
         faqs: [
             {
                 id: "faq-sfj-1",
                 question: "Do these jeans stretch out after wearing?",
                 answer: "The 2% elastane blend helps them retain shape while giving enough flex for all-day comfort.",
+            },
+            {
+                id: "faq-sfj-2",
+                question: "Are these jeans suitable for casual and semi-formal occasions?",
+                answer: "Yes, the classic design and clean finish make them versatile for both casual outings and smart-casual events.",
             },
         ],
     },
@@ -259,6 +272,22 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 review: "Customer service was incredibly helpful when I needed to swap a size for my checkered shirt. The replacement arrived within two days. Highly recommend!",
                 isVerified: true,
                 date: "August 19, 2023",
+            },
+            {
+                id: "review-james-t-2023-08-20",
+                name: "James T.",
+                rating: 5,
+                review: "The checkered shirt fits perfectly and the fabric feels premium. I appreciate the attention to detail in the stitching.",
+                isVerified: true,
+                date: "August 20, 2023",
+            },
+            {
+                id: "review-sophia-m-2023-08-21",
+                name: "Sophia M.",
+                rating: 4,
+                review: "I love the checkered shirt! The fit is just right, and the material feels high-quality.",
+                isVerified: true,
+                date: "August 21, 2023",
             },
         ],
         faqs: [
@@ -308,8 +337,45 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 isVerified: true,
                 date: "August 18, 2023",
             },
+            {
+                id: "review-noah-d-2023-08-19",
+                name: "Noah D.",
+                rating: 4,
+                review: "Comfortable and stylish. The fit is true to size, and the quality is impressive.",
+                isVerified: true,
+                date: "August 19, 2023",
+            },
+            {
+                id: "review-emma-w-2023-08-20",
+                name: "Emma W.",
+                rating: 5,
+                review: "Absolutely love this t-shirt! The fit is perfect and the fabric is so soft.",
+                isVerified: true,
+                date: "August 20, 2023",
+            },
         ],
-        faqs: [],
+        faqs: [
+            {
+                id: "faq-sleeve-striped-tshirt-1",
+                question: "Is this t-shirt suitable for summer?",
+                answer: "Yes, the lightweight cotton material makes it perfect for hot weather.",
+            },
+            {
+                id: "faq-sleeve-striped-tshirt-2",
+                question: "Can I machine wash this t-shirt?",
+                answer: "Yes, it is safe to machine wash in cold water. We recommend turning it inside out to preserve the stripes.",
+            },
+            {
+                id: "faq-sleeve-striped-tshirt-3",
+                question: "Does the t-shirt shrink after washing?",
+                answer: "The t-shirt is pre-shrunk, but we recommend following the care instructions to maintain its size and shape.",
+            },
+            {
+                id: "faq-sleeve-striped-tshirt-4",
+                question: "Can I iron this t-shirt?",
+                answer: "Yes, you can iron it on a low setting. Avoid ironing directly on the stripes to prevent damage.",
+            }
+        ],
     },
 
     // 5. Vertical Striped Shirt
@@ -359,7 +425,18 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 date: "August 23, 2023",
             },
         ],
-        faqs: [],
+        faqs: [
+            {
+                id: "faq-vss-1",
+                question: "Is this shirt suitable for summer?",
+                answer: "Yes, the lightweight linen-blend fabric makes it perfect for hot weather.",
+            },
+            {
+                id: "faq-vss-2",
+                question: "Can I machine wash this shirt?",
+                answer: "Yes, it is safe to machine wash in cold water. We recommend turning it inside out to preserve the fabric.",
+            },
+        ],
     },
 
     // 6. Courage Graphic T-Shirt
@@ -392,7 +469,18 @@ export const productDetailsData: Record<string, ProductDetails> = {
             ],
         },
         reviews: [],
-        faqs: [],
+        faqs: [
+            {
+                id: "faq-courage-graphic-tshirt-1",
+                question: "Is this t-shirt suitable for summer?",
+                answer: "Yes, the heavyweight cotton provides structure while remaining breathable for casual summer wear.",
+            },
+            {
+                id: "faq-courage-graphic-tshirt-2",
+                question: "Can I machine wash this t-shirt?",
+                answer: "Yes, it is safe to machine wash in cold water inside out to protect the graphic print.",
+            },
+        ],
     },
 
     // 7. Loose Fit Bermuda Shorts
@@ -425,7 +513,23 @@ export const productDetailsData: Record<string, ProductDetails> = {
             ],
         },
         reviews: [],
-        faqs: [],
+        faqs: [
+            {
+                id: "faq-loose-fit-bermuda-shorts-1",
+                question: "Are these shorts suitable for summer?",
+                answer: "Yes, the lightweight cotton material makes these shorts perfect for hot weather.",
+            },
+            {
+                id: "faq-loose-fit-bermuda-shorts-2",
+                question: "Can I machine wash these shorts?",
+                answer: "Yes, it is safe to machine wash in cold water. We recommend turning them inside out to preserve the fabric.",
+            },
+            {
+                id: "faq-loose-fit-bermuda-shorts-3",
+                question: "Do these shorts have an adjustable waistband?",
+                answer: "Yes, they feature an elastic waistband with an inner drawstring for a customizable fit.",
+            }
+        ],
     },
 
     // 8. Faded Skinny Jeans
@@ -454,8 +558,36 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 "Signature metal hardware",
             ],
         },
-        reviews: [],
-        faqs: [],
+        reviews: [
+            {
+                id: "review-michael-b-2023-08-17",
+                name: "Michael B.",
+                rating: 4,
+                review: "Great fit and quality. The stretch denim is very comfortable.",
+                isVerified: true,
+                date: "August 17, 2023",
+            },
+            {
+                id: "review-sarah-l-2023-08-18",
+                name: "Sarah L.",
+                rating: 5,
+                review: "Love these jeans! They fit perfectly and are very comfortable.",
+                isVerified: true,
+                date: "August 18, 2023",
+            },
+        ],
+        faqs: [
+            {
+                id: "faq-faded-skinny-jeans-1",
+                question: "Do these jeans stretch out after wearing?",
+                answer: "Yes, the 1% Spandex allows the jeans to stretch slightly for comfort while maintaining their shape.",
+            },
+            {
+                id: "faq-faded-skinny-jeans-2",
+                question: "Are these jeans suitable for casual and semi-formal occasions?",
+                answer: "Yes, the faded skinny jeans can be dressed up or down depending on the occasion.",
+            },
+        ],
     },
 
     // 9. polo-with-contrast-trims
@@ -487,8 +619,23 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 "Ribbed cuffs",
             ],
         },
-        reviews: [],
-        faqs: [],
+        reviews: [
+            {
+                id: "review-michael-b-2023-08-17",
+                name: "Michael B.",
+                rating: 4,
+                review: "Good quality polo shirt with stylish contrast trims.",
+                isVerified: true,
+                date: "August 17, 2023",
+            }
+        ],
+        faqs: [
+            {
+                id: "faq-polo-with-contrast-trims-1",
+                question: "Is this polo shirt suitable for casual and semi-formal occasions?",
+                answer: "Yes, this polo shirt can be dressed up or down depending on the occasion.",
+            },
+        ],
     },
 
     // 10. gradient-graphic-tshirt
@@ -520,8 +667,31 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 "Short sleeves",
             ],
         },
-        reviews: [],
-        faqs: [],
+        reviews: [
+            {
+                id: "review-michael-b-2023-08-17",
+                name: "Michael B.",
+                rating: 4,
+                review: "Great casual t-shirt with a modern gradient graphic.",
+                isVerified: true,
+                date: "August 17, 2023",
+            },
+            {
+                id: "review-sarah-l-2023-08-18",
+                name: "Sarah L.",
+                rating: 5,
+                review: "Love this t-shirt! The gradient graphic is eye-catching and the fit is great.",
+                isVerified: true,
+                date: "August 18, 2023",
+            }
+        ],
+        faqs: [
+            {
+                id: "faq-gradient-graphic-tshirt-1",
+                question: "Is this t-shirt suitable for casual wear?",
+                answer: "Yes, this t-shirt is perfect for casual outings.",
+            },  
+        ],
     },
 
     // 11. polo-with-tipping-details
@@ -553,8 +723,36 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 "Ribbed cuffs",
             ],
         },
-        reviews: [],
-        faqs: [],
+        reviews: [
+            {
+                id: "review-michael-b-2023-08-17",
+                name: "Michael B.",
+                rating: 4,
+                review: "Good quality polo shirt with tipping details.",
+                isVerified: true,
+                date: "August 17, 2023",
+            },
+            {
+                id: "review-sarah-l-2023-08-18",
+                name: "Sarah L.",
+                rating: 5,
+                review: "Love this polo shirt! The tipping details add a stylish touch.",
+                isVerified: true,
+                date: "August 18, 2023",
+            },
+        ],
+        faqs: [
+            {
+                id: "faq-polo-with-tipping-details-1",
+                question: "Is this polo shirt suitable for casual and semi-formal occasions?",
+                answer: "Yes, this polo shirt can be dressed up or down depending on the occasion.",
+            },
+            {
+                id: "faq-polo-with-tipping-details-2",
+                question: "Can this polo shirt be worn in hot weather?",
+                answer: "Yes, the 100% cotton material makes it breathable and comfortable for warm weather.",
+            },
+        ],
     },
 
 
@@ -586,8 +784,84 @@ export const productDetailsData: Record<string, ProductDetails> = {
                 "Short sleeves",
             ],
         },
-        reviews: [],
-        faqs: [],
+        reviews: [
+            {
+                id: "review-michael-b-2023-08-17",
+                name: "Michael B.",
+                rating: 4,
+                review: "Good quality black striped t-shirt.",
+                isVerified: true,
+                date: "August 17, 2023",
+            },
+            {
+                id: "review-sarah-l-2023-08-18",
+                name: "Sarah L.",
+                rating: 5,
+                review: "Love this black striped t-shirt! The fit is great and the stripes are stylish.",
+                isVerified: true,
+                date: "August 18, 2023",
+            },
+            {
+                id: "review-john-d-2023-08-19",
+                name: "John D.",
+                rating: 4,
+                review: "Comfortable black striped t-shirt with a classic design.",
+                isVerified: true,
+                date: "August 19, 2023",
+            },
+            {
+                id: "review-emily-r-2023-08-20",
+                name: "Emily R.",
+                rating: 5,
+                review: "Stylish and comfortable black striped t-shirt.",
+                isVerified: true,
+                date: "August 20, 2023",
+            },
+            {
+                id: "review-michael-b-2023-08-21",
+                name: "Michael B.",
+                rating: 4,
+                review: "Another good black striped t-shirt.",
+                isVerified: true,
+                date: "August 21, 2023",
+            },
+            {
+                id: "review-sarah-l-2023-08-22",
+                name: "Sarah L.",
+                rating: 5,
+                review: "Another stylish black striped t-shirt.",
+                isVerified: true,
+                date: "August 22, 2023",
+            },
+            {
+                id: "review-john-d-2023-08-23",
+                name: "John D.",
+                rating: 4,
+                review: "Another comfortable black striped t-shirt.",
+                isVerified: true,
+                date: "August 23, 2023",
+            },
+            {
+                id: "review-emily-r-2023-08-24",
+                name: "Emily R.",
+                rating: 5,
+                review: "Yet another stylish black striped t-shirt.",
+                isVerified: true,
+                date: "August 24, 2023",
+            }
+        ],
+        faqs: [
+            {
+                id: "faq-black-striped-tshirt-1",
+                question: "Is this t-shirt suitable for casual wear?",
+                answer: "Yes, this t-shirt is perfect for casual outings.",
+            },
+            {
+                id: "faq-black-striped-tshirt-2",
+                question: "Can this t-shirt be worn in hot weather?",
+                answer: "Yes, the 100% cotton material makes it breathable and comfortable for warm weather.",
+            },
+        ],
     },
 
 

@@ -1,7 +1,8 @@
 import { ProductDetails } from "@/data/product-details-data";
 import React from "react";
 import Image from "next/image";
-import { Star, Check, Minus, Plus } from "lucide-react";
+import { Star, Check, Minus, Plus, Heart } from "lucide-react";
+import { RiHeartFill } from "@remixicon/react";
 
 interface ProductInfoProps {
   product: ProductDetails;
@@ -13,6 +14,11 @@ interface ProductInfoProps {
   setSelectedSize: (size: string) => void;
   quantity: number;
   handleQuantityChange: (type: "inc" | "dec") => void;
+  handleAddToCart: () => void;
+  cartHasHydrated: boolean;
+  isWishlisted: boolean;
+  wishHasHydrated: boolean;
+  handleToggleWish: () => void;
 }
 
 const ProductInfo: React.FC<ProductInfoProps> = ({
@@ -25,18 +31,23 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   setSelectedSize,
   quantity,
   handleQuantityChange,
+  handleAddToCart,
+  cartHasHydrated,
+  isWishlisted,
+  wishHasHydrated,
+  handleToggleWish,
 }) => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 container py-12">
       {/* Left: Gallery */}
       <div className="flex flex-col-reverse md:flex-row gap-4">
         {/* Thumbnails */}
-        <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto w-full md:w-36 flex-shrink-0">
+        <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto w-full md:w-36 shrink-0">
           {product.images.map((img, index: number) => (
             <button
               key={index}
               onClick={() => setSelectedImageIndex(index)}
-              className={`relative w-24 h-24 sm:w-32 sm:h-32 md:w-full rounded-xl overflow-hidden border-2 transition-all bg-background ${
+              className={`relative w-24 h-24 sm:w-28 sm:h-28 xl:w-32 xl:h-32 md:w-full rounded-xl overflow-hidden border-2 transition-all bg-background ${
                 selectedImageIndex === index
                   ? "border-foreground"
                   : "border-transparent hover:border-foreground/30"
@@ -53,7 +64,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
         </div>
 
         {/* Main Preview Image */}
-        <div className="relative w-full h-80 sm:h-138 rounded-[20px] overflow-hidden bg-background md:flex-1">
+        <div className="relative w-full h-80 sm:h-120 xl:h-138 rounded-[20px] overflow-hidden bg-background md:flex-1">
           {product.images[selectedImageIndex] && (
             <Image
               src={product.images[selectedImageIndex]}
@@ -68,9 +79,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
       {/* Right: Purchase Controls */}
       <div className="flex flex-col justify-center">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground uppercase tracking-tight mb-3">
-          {product.title}
-        </h1>
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h1 className="text-3xl sm:text-4xl 2xl:text-5xl font-semibold text-foreground uppercase tracking-tight">
+            {product.title}
+          </h1>
+        </div>
 
         {/* Rating */}
         <div className="flex items-center gap-2 mb-4">
@@ -113,9 +126,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
         <hr className="border-foreground/10 my-2" />
 
+<div className="flex items-center gap-6 flex-wrap">
+
         {/* Color Selector */}
-        <div className="py-4">
-          <span className="text-sm text-foreground/60 font-normal block mb-3">
+        <div className="py-3 flex flex-col gap-3">
+          <span className="text-sm text-foreground/60 font-normal block">
             Select Colors
           </span>
           <div className="flex items-center gap-4">
@@ -126,7 +141,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                   key={color.name}
                   onClick={() => setSelectedColor(color.name)}
                   style={{ backgroundColor: color.hex }}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform ${
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform ${
                     isSelected
                       ? "ring-2 ring-offset-2 ring-black scale-105"
                       : "hover:scale-105 border border-foreground/10"
@@ -149,6 +164,33 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             })}
           </div>
         </div>
+
+        
+<div className="py-3 flex flex-col gap-2.5">
+          <span className="text-sm text-foreground/60 font-normal block">
+            Add to Wishlist
+          </span>
+          <button
+            title={
+              wishHasHydrated
+                ? isWishlisted
+                  ? "Remove from wishlist"
+                  : "Add to wishlist"
+                : "Loading wishlist"
+            }
+            disabled={!wishHasHydrated}
+            aria-disabled={!wishHasHydrated}
+            onClick={handleToggleWish}
+            className="shrink-0 rounded-full w-8 h-8 flex justify-center items-center bg-muted hover:bg-foreground/10 transition-colors"
+          >
+            {isWishlisted ? (
+              <RiHeartFill size={16} className="text-red-600" />
+            ) : (
+              <Heart size={16} className="text-foreground/80" />
+            )}
+          </button>
+          </div>
+</div>
 
         <hr className="border-foreground/10 my-2" />
 
@@ -201,7 +243,13 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             </button>
           </div>
 
-          <button className="flex-1 bg-foreground text-background py-3.5 px-8 rounded-full font-medium hover:bg-foreground/90 transition-all text-center">
+          <button
+            title={cartHasHydrated ? "Add to cart" : "Loading cart"}
+            disabled={!cartHasHydrated}
+            aria-disabled={!cartHasHydrated}
+            onClick={handleAddToCart}
+            className="flex-1 bg-foreground text-background py-3.5 px-8 rounded-full font-medium hover:bg-foreground/90 transition-all text-center disabled:opacity-60"
+          >
             Add to Cart
           </button>
         </div>

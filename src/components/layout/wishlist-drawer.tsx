@@ -42,7 +42,7 @@ export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
     const addItem = useCartStore((state) => state.addItem);
 
     function handleAddToCart(item: WishDisplayItem) {
-        addItem(item);
+        addItem(item.id);
         toast.success("Added to cart", {
             description: `${item.title} was added to your cart.`,
         });
@@ -51,7 +51,7 @@ export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
     const availableItems = items.filter((item) => !item.unavailable);
 
     function handleAddAllToCart() {
-        availableItems.forEach((item) => addItem(item));
+        availableItems.forEach((item) => addItem(item.id));
         toast.success("All items added to cart", {
             description: `${availableItems.length} ${availableItems.length === 1 ? "item" : "items"} added to your cart.`,
         });

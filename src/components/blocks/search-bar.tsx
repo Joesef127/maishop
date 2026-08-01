@@ -76,9 +76,12 @@ const SearchBar = ({ fullWidth = false }: SearchBarProps) => {
                                 <button
                                     type="button"
                                     onClick={() => handleSelect(p.id)}
-                                    className="w-full text-left px-4 py-2 text-sm hover:bg-muted"
+                                    className="w-full text-left px-4 py-2 hover:bg-muted flex flex-col"
                                 >
-                                    {p.title}
+                                    <span className="text-sm font-medium">{p.title}</span>
+                                    <span className="text-xs text-muted-foreground capitalize">
+                                        {p.category} • {p.type.replace(/-/g, " ")}
+                                    </span>
                                 </button>
                             </li>
                         ))}

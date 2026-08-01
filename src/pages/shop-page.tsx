@@ -27,12 +27,13 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const PAGE_SIZE = 9;
 
 const sortOptions = [
-  { value: "popular", label: "Most Popular" },
-  { value: "newest", label: "Newest" },
+  { value: "rating", label: "Top Rated" },
   { value: "price-asc", label: "Price: Low to High" },
   { value: "price-desc", label: "Price: High to Low" },
-  { value: "rating", label: "Top Rated" },
 ] as const;
+
+type SortValue = (typeof sortOptions)[number]["value"];
+const supportedSortValues = new Set<SortValue>(sortOptions.map((option) => option.value));
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
@@ -58,14 +59,25 @@ export default function ShopPage() {
   };
   const min = parseNumber(searchParams?.get("min"));
   const max = parseNumber(searchParams?.get("max"));
-  const sort = searchParams?.get("sort") ?? "popular";
+  const requestedSort = searchParams?.get("sort");
+  const sort: SortValue =
+    requestedSort && supportedSortValues.has(requestedSort as SortValue)
+      ? (requestedSort as SortValue)
+      : "rating";
   const requestedPage = Math.max(1, Math.trunc(parseNumber(searchParams?.get("page")) ?? 1));
   const filtered = useMemo(() => {
     let list = allProducts.filter((p) => p.available !== false);
 
     if (category) list = list.filter((p) => p.category === category);
     if (type) list = list.filter((p) => p.type === type);
-    if (query) list = list.filter((p) => p.title.toLowerCase().includes(query));
+    if (query) {
+      list = list.filter(
+        (p) =>
+          p.title.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query) ||
+          p.type.toLowerCase().includes(query),
+      );
+    }
     if (colors.length) list = list.filter((p) => p.colors.some((c) => colors.includes(c)));
     if (sizes.length) list = list.filter((p) => p.sizes.some((s) => sizes.includes(s)));
     if (min !== undefined) list = list.filter((p) => p.price >= min);
@@ -79,11 +91,7 @@ export default function ShopPage() {
       case "price-desc":
         sorted.sort((a, b) => b.price - a.price);
         break;
-      case "newest":
-        sorted.reverse();
-        break;
       case "rating":
-      case "popular":
       default:
         sorted.sort((a, b) => b.rating - a.rating);
         break;
@@ -185,6 +193,8 @@ export default function ShopPage() {
                 <PaginationItem>
                   <PaginationPrevious
                     href="#"
+                    aria-disabled={safePage === 1}
+                    tabIndex={safePage === 1 ? -1 : 0}
                     onClick={(e) => {
                       e.preventDefault();
                       if (safePage > 1) goToPage(safePage - 1);
@@ -211,6 +221,8 @@ export default function ShopPage() {
                 <PaginationItem>
                   <PaginationNext
                     href="#"
+                    aria-disabled={safePage === totalPages}
+                    tabIndex={safePage === totalPages ? -1 : 0}
                     onClick={(e) => {
                       e.preventDefault();
                       if (safePage < totalPages) goToPage(safePage + 1);

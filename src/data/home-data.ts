@@ -1,12 +1,50 @@
 import {products} from "@/lib";
 import {StaticImageData} from "next/image";
 
+export type DressStyle = "casual" | "formal" | "party" | "gym";
+export type ProductType = "t-shirts" | "shorts" | "shirts" | "hoodie" | "jeans" | "dresses";
+
+export interface ColorSwatch {
+    name: string;
+    hex: string;
+}
+
+// Fixed swatch palette used across the shop filters.
+export const colorPalette: ColorSwatch[] = [
+    { name: "Green", hex: "#00C12B" },
+    { name: "Red", hex: "#F50606" },
+    { name: "Yellow", hex: "#F5DD06" },
+    { name: "Orange", hex: "#F57906" },
+    { name: "Light Blue", hex: "#06CAF5" },
+    { name: "Blue", hex: "#0619F5" },
+    { name: "Purple", hex: "#7D06F5" },
+    { name: "Pink", hex: "#F506A4" },
+    { name: "White", hex: "#FFFFFF" },
+    { name: "Black", hex: "#000000" },
+];
+
+export const sizeOptions: string[] = [
+    "XX-Small",
+    "X-Small",
+    "Small",
+    "Medium",
+    "Large",
+    "X-Large",
+    "XX-Large",
+    "3X-Large",
+    "4X-Large",
+];
+
 export interface ProductCardProps {
     id: string;
     title: string;
     image: StaticImageData;
     rating: number;
     price: number;
+    category: DressStyle;
+    type: ProductType;
+    colors: string[];
+    sizes: string[];
     discountPercentage?: number;
     hasDiscount: boolean;
     available?: boolean;
@@ -29,16 +67,24 @@ export const newArrivalsData: ProductCardProps[] = [
         rating: 4,
         price: 120,
         hasDiscount: false,
+        category: "casual",
+        type: "t-shirts",
+        colors: ["#000000", "#FFFFFF"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
     
     {
         id: "product-skinny-fit-jeans",
         title: "Skinny Fit Jeans",
         image: products.skinny_fit_jeans3,
-        rating: 3,
+        rating: 3.5,
         price: 240,
         discountPercentage: 20,
         hasDiscount: true,
+        category: "casual",
+        type: "jeans",
+        colors: ["#0619F5", "#000000"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
 
     {
@@ -48,16 +94,24 @@ export const newArrivalsData: ProductCardProps[] = [
         rating: 4,
         price: 180,
         hasDiscount: false,
+        category: "casual",
+        type: "shirts",
+        colors: ["#F50606", "#0619F5"],
+        sizes: ["Medium", "Large", "X-Large"],
     },
 
     {
         id: "product-sleeve-striped-tshirt",
         title: "Sleeve Striped T-Shirt",
         image: products.sleeve_striped_tshirt2,
-        rating: 4,
+        rating: 4.5,
         price: 130,
         discountPercentage: 30,
         hasDiscount: true,
+        category: "casual",
+        type: "t-shirts",
+        colors: ["#FFFFFF", "#0619F5"],
+        sizes: ["Small", "Medium", "Large"],
     },
 ];
 
@@ -70,6 +124,10 @@ export const topSellingData: ProductCardProps[] = [
         price: 212,
         discountPercentage: 20,
         hasDiscount: true,
+        category: "formal",
+        type: "shirts",
+        colors: ["#00C12B", "#06CAF5"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
     {
         id: "product-courage-graphic-tshirt",
@@ -78,6 +136,10 @@ export const topSellingData: ProductCardProps[] = [
         rating: 4.0,
         price: 145,
         hasDiscount: false,
+        category: "casual",
+        type: "t-shirts",
+        colors: ["#F57906", "#000000"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
     {
         id: "product-loose-fit-bermuda-shorts",
@@ -86,6 +148,10 @@ export const topSellingData: ProductCardProps[] = [
         rating: 3.0,
         price: 80,
         hasDiscount: false,
+        category: "gym",
+        type: "shorts",
+        colors: ["#0619F5", "#000000"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
     {
         id: "product-faded-skinny-jeans",
@@ -94,6 +160,50 @@ export const topSellingData: ProductCardProps[] = [
         rating: 4,
         price: 210,
         hasDiscount: false,
+        category: "formal",
+        type: "jeans",
+        colors: ["#0619F5"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+    },
+];
+
+export const additionalProductsData: ProductCardProps[] = [
+    {
+        id: "product-gym-tank-top",
+        title: "Gym Tank Top",
+        image: products.gym_tank_top,
+        rating: 4.2,
+        price: 45,
+        hasDiscount: false,
+        category: "gym",
+        type: "t-shirts",
+        colors: ["#000000", "#F5DD06"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+    },
+    {
+        id: "product-formal-grid-blazer",
+        title: "Formal Grid Blazer",
+        image: products.formal_grid_blazer,
+        rating: 4.6,
+        price: 260,
+        discountPercentage: 15,
+        hasDiscount: true,
+        category: "formal",
+        type: "shirts",
+        colors: ["#000000", "#0619F5"],
+        sizes: ["Medium", "Large", "X-Large", "XX-Large"],
+    },
+    {
+        id: "product-party-off-shoulder-gown",
+        title: "Party Off Shoulder Gown",
+        image: products.party_off_shoulder_gown,
+        rating: 4.4,
+        price: 220,
+        hasDiscount: false,
+        category: "party",
+        type: "dresses",
+        colors: ["#F506A4", "#7D06F5"],
+        sizes: ["Small", "Medium", "Large"],
     },
 ];
 

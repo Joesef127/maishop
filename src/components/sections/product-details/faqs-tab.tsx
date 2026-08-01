@@ -24,9 +24,9 @@ const FAQsTab: React.FC<FAQsTabProps> = ({ product }) => {
             <AccordionItem
               key={faq.id}
               value={String(faq.id)}
-              className="border border-foreground/10 rounded-[20px] px-6 not-last:border-b"
+              className="border border-foreground/10 rounded-[20px] px-4 not-last:border-b"
             >
-              <AccordionTrigger className="font-medium text-foreground text-lg py-6 hover:no-underline">
+              <AccordionTrigger className="text-foreground tracking-wide text-sm sm:text-base py-4 hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="px-0">

@@ -1,7 +1,7 @@
-import { ProductCardProps, newArrivalsData, topSellingData } from "@/data/home-data";
+import { ProductCardProps, newArrivalsData, topSellingData, additionalProductsData } from "@/data/home-data";
 import { suggestedData } from "./product-details-data";
 
-const allProducts: ProductCardProps[] = [...newArrivalsData, ...topSellingData, ...suggestedData];
+const allProducts: ProductCardProps[] = [...newArrivalsData, ...topSellingData, ...suggestedData, ...additionalProductsData];
 
 const productMap = new Map(allProducts.map((p) => [p.id, p]));
 

@@ -21,8 +21,8 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
       <div className="container pb-8">
         <div className="grid grid-cols-3 text-center">
           {[
-            { id: "details", label: "Product Details" },
-            { id: "reviews", label: "Rating & Reviews" },
+            { id: "details", label: "Details" },
+            { id: "reviews", label: "Reviews" },
             { id: "faqs", label: "FAQs" },
           ].map((tab) => (
             <button

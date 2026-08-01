@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import React, { Suspense } from "react";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -25,11 +25,15 @@ const findLabel = (segment: string) => {
     return segment.replace(/-/g, " ");
 };
 
-export function DynamicBreadcrumb() {
+function BreadcrumbTrail() {
     const pathname = usePathname();
+    const searchParams = useSearchParams();
     const segments = pathname?.split("/").filter(Boolean) || [];
 
     if (segments.length === 0) return null;
+
+    // Reflect the active dress-style filter on the shop page (e.g. Home > Casual).
+    const category = pathname === "/shop" ? searchParams?.get("category") : null;
 
     return (
         <Breadcrumb>
@@ -43,7 +47,7 @@ export function DynamicBreadcrumb() {
                 {segments.map((segment, index) => {
                     const href = `/${segments.slice(0, index + 1).join("/")}`;
                     const isLast = index === segments.length - 1;
-                    const label = findLabel(segment);
+                    const label = isLast && category ? category : findLabel(segment);
                     const isProductLabel = Boolean(productDetailsData[segment]);
 
                     return (
@@ -70,5 +74,13 @@ export function DynamicBreadcrumb() {
                 })}
             </BreadcrumbList>
         </Breadcrumb>
+    );
+}
+
+export function DynamicBreadcrumb() {
+    return (
+        <Suspense fallback={null}>
+            <BreadcrumbTrail />
+        </Suspense>
     );
 }

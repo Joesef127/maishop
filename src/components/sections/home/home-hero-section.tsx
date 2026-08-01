@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import CountUp from "@/utils/count-up";
 import { useEffect, useState } from "react";
+import {useRouter} from "next/navigation";
 
 const HomeHeroSection = () => {
   const reputationFigures = [
@@ -15,6 +16,8 @@ const HomeHeroSection = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const router = useRouter()
 
   useEffect(() => {
     const handleTyping = () => {
@@ -58,6 +61,7 @@ const HomeHeroSection = () => {
           style.
         </p>
         <Button
+            onClick={() => router.push("/shop")}
           variant="primary"
           size="custom"
           className="bg-background text-foreground hover:bg-foreground hover:text-background"

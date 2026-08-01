@@ -41,34 +41,50 @@ export const suggestedData: ProductCardProps[] = [
         price: 120,
         hasDiscount: true,
         discountPercentage: 15,
+        category: "party",
+        type: "shirts",
+        colors: ["#FFFFFF", "#000000"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
 
     {
         id: "product-gradient-graphic-tshirt",
         title: "Gradient Graphic T-Shirt",
         image: products.gradient_graphic_tshirt,
-        rating: 4.2,
-        price: 60,
+        rating: 3.5,
+        price: 145,
         hasDiscount: false,
+        category: "casual",
+        type: "t-shirts",
+        colors: ["#7D06F5", "#F506A4"],
+        sizes: ["Small", "Medium", "Large"],
     },
 
     {
         id: "product-polo-with-tipping-details",
         title: "Polo with Tipping Details",
         image: products.polo_with_tipping_details,
-        rating: 4.3,
-        price: 130,
+        rating: 4.5,
+        price: 180,
         hasDiscount: false,
+        category: "casual",
+        type: "shirts",
+        colors: ["#F50606", "#FFFFFF"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
 
     {
         id: "product-black-striped-tshirt",
         title: "Black Striped T-Shirt",
         image: products.tshirt_with_black_sleeves,
-        rating: 4.1,
-        price: 55,
-        discountPercentage: 30,
+        rating: 5.0,
+        price: 120,
+        discountPercentage: 20,
         hasDiscount: true,
+        category: "casual",
+        type: "t-shirts",
+        colors: ["#000000", "#FFFFFF"],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
     },
 ];
 
@@ -183,7 +199,7 @@ export const productDetailsData: Record<string, ProductDetails> = {
             products.skinny_fit_jeans3,
             products.skinny_fit_jeans4,
         ],
-        rating: 3,
+        rating: 3.5,
         price: 240,
         description:
             "Crafted from premium stretch denim, these skinny fit jeans provide both flexibility and modern silhouette style for everyday wear.",
@@ -309,7 +325,7 @@ export const productDetailsData: Record<string, ProductDetails> = {
             products.sleeve_striped_tshirt3,
             products.sleeve_striped_tshirt4,
         ],
-        rating: 4,
+        rating: 4.5,
         price: 130,
         description:
             "A retro-inspired crewneck tee featuring athletic contrast stripes on the sleeves for an effortlessly sporty look.",
@@ -648,8 +664,8 @@ export const productDetailsData: Record<string, ProductDetails> = {
             products.gradient_graphic_tshirt3,
             products.gradient_graphic_tshirt4,
         ],
-        rating: 4.2,
-        price: 60,
+        rating: 3.5,
+        price: 145,
         description:
             "Casual t-shirt featuring a gradient graphic print for a modern look.",
         colors: [
@@ -704,8 +720,8 @@ export const productDetailsData: Record<string, ProductDetails> = {
             products.polo_with_tipping_details3,
             products.polo_with_tipping_details4,
         ],
-        rating: 4.3,
-        price: 130,
+        rating: 4.5,
+        price: 180,
         description:
             "Classic polo shirt featuring tipping details on the collar and sleeves for a refined look.",
         colors: [
@@ -766,8 +782,8 @@ export const productDetailsData: Record<string, ProductDetails> = {
             products.tshirt_with_black_sleeves3,
             products.tshirt_with_black_sleeves4,
         ],
-        rating: 4.1,
-        price: 55,
+        rating: 5.0,
+        price: 120,
         description:
             "Casual black t-shirt featuring white stripes for a classic look.",
         colors: [
@@ -864,8 +880,161 @@ export const productDetailsData: Record<string, ProductDetails> = {
         ],
     },
 
+    // 13. gym tank top
+    "product-gym-tank-top": {
+        id: "product-gym-tank-top",
+        title: "Gym Tank Top",
+        images: [products.gym_tank_top],
+        rating: 4.2,
+        price: 45,
+        description:
+            "A breathable, moisture-wicking tank top built for high-intensity workouts and everyday gym sessions.",
+        colors: [
+            { name: "Black", hex: "#000000" },
+            { name: "Yellow", hex: "#F5DD06" },
+        ],
+        sizes: ["Small", "Medium", "Large", "X-Large"],
+        details: {
+            material: "88% Polyester, 12% Elastane",
+            fit: "Athletic Fit",
+            careInstructions: "Machine wash cold, do not iron print.",
+            features: [
+                "Moisture-wicking fabric",
+                "Racerback cut for full range of motion",
+                "Flatlock seams to prevent chafing",
+            ],
+        },
+        reviews: [
+            {
+                id: "review-gym-tank-top-1",
+                name: "Marcus T.",
+                rating: 4,
+                review: "Great tank top for lifting, keeps me dry through long sessions.",
+                isVerified: true,
+                date: "August 22, 2023",
+            },
+            {
+                id: "review-gym-tank-top-2",
+                name: "Priya S.",
+                rating: 5,
+                review: "Lightweight and comfortable, exactly what I look for in gym wear.",
+                isVerified: true,
+                date: "August 23, 2023",
+            },
+        ],
+        faqs: [
+            {
+                id: "faq-gym-tank-top-1",
+                question: "Is this tank top true to size?",
+                answer: "Yes, it fits true to size with a snug athletic cut.",
+            },
+        ],
+    },
 
+    // 14. formal grid blazer
+    "product-formal-grid-blazer": {
+        id: "product-formal-grid-blazer",
+        title: "Formal Grid Blazer",
+        images: [
+            products.formal_grid_blazer,
+            products.formal_grid_blazer2,
+            products.formal_grid_blazer3,
+            products.formal_grid_blazer4,
+        ],
+        rating: 4.6,
+        price: 260,
+        description:
+            "A sharply tailored grid-pattern blazer crafted for boardrooms and formal events alike.",
+        colors: [
+            { name: "Charcoal Black", hex: "#000000" },
+            { name: "Navy Blue", hex: "#0619F5" },
+        ],
+        sizes: ["Medium", "Large", "X-Large", "XX-Large"],
+        details: {
+            material: "70% Wool, 30% Polyester",
+            fit: "Tailored Fit",
+            careInstructions: "Dry clean only.",
+            features: [
+                "Subtle grid pattern weave",
+                "Fully lined interior",
+                "Double-button front closure",
+            ],
+        },
+        reviews: [
+            {
+                id: "review-formal-grid-blazer-1",
+                name: "David N.",
+                rating: 5,
+                review: "Fits like it was tailored for me. Great for client meetings.",
+                isVerified: true,
+                date: "August 24, 2023",
+            },
+            {
+                id: "review-formal-grid-blazer-2",
+                name: "Grace O.",
+                rating: 4,
+                review: "Sharp look and solid stitching, slightly heavy for warm weather.",
+                isVerified: true,
+                date: "August 25, 2023",
+            },
+        ],
+        faqs: [
+            {
+                id: "faq-formal-grid-blazer-1",
+                question: "Can this blazer be worn without a tie?",
+                answer: "Yes, it pairs well with both a tie for formal settings and an open collar for smart-casual looks.",
+            },
+        ],
+    },
 
-
-
+    // 15. party off-shoulder gown
+    "product-party-off-shoulder-gown": {
+        id: "product-party-off-shoulder-gown",
+        title: "Party Off Shoulder Gown",
+        images: [products.party_off_shoulder_gown],
+        rating: 4.4,
+        price: 220,
+        description:
+            "An elegant off-shoulder gown with a flowing silhouette, designed for parties and special occasions.",
+        colors: [
+            { name: "Blush Pink", hex: "#F506A4" },
+            { name: "Royal Purple", hex: "#7D06F5" },
+        ],
+        sizes: ["Small", "Medium", "Large"],
+        details: {
+            material: "95% Polyester, 5% Spandex",
+            fit: "Fitted Bodice, Flared Skirt",
+            careInstructions: "Hand wash cold, hang dry.",
+            features: [
+                "Off-shoulder neckline",
+                "Concealed back zipper",
+                "Lined skirt with soft flow",
+            ],
+        },
+        reviews: [
+            {
+                id: "review-party-off-shoulder-gown-1",
+                name: "Chloe B.",
+                rating: 5,
+                review: "Turned heads at the party! Fit was perfect and the fabric feels luxurious.",
+                isVerified: true,
+                date: "August 26, 2023",
+            },
+            {
+                id: "review-party-off-shoulder-gown-2",
+                name: "Nina F.",
+                rating: 4,
+                review: "Beautiful gown, runs slightly long so consider heels.",
+                isVerified: true,
+                date: "August 27, 2023",
+            },
+        ],
+        faqs: [
+            {
+                id: "faq-party-off-shoulder-gown-1",
+                question: "Is this gown suitable for outdoor events?",
+                answer: "Yes, the lightweight fabric works well for both indoor and outdoor evening events.",
+            },
+        ],
+    },
 };

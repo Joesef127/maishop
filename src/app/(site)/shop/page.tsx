@@ -1,14 +1,12 @@
-function ShopPage() {
+import { Suspense } from "react";
+import ShopPage from "@/pages/shop-page";
+
+function Shop() {
     return (
-        <main>
-            <section className="flex items-center justify-center">
-                <div className="container">
-                    <h1>Shop page</h1>
-                    <div>this is a test section</div>
-                </div>
-            </section>
-        </main>
+        <Suspense>
+            <ShopPage />
+        </Suspense>
     );
 }
 
-export default ShopPage;
+export default Shop;

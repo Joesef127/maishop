@@ -12,7 +12,7 @@ const BrowseStyle = () => {
         <div className="grid gap-2.5 sm:gap-5">
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
             <Link
-              href="/shop#casual"
+              href="/shop?category=casual"
               className="zoom-card w-full h-48 sm:h-80 cursor-pointer relative"
             >
               <Image
@@ -28,7 +28,7 @@ const BrowseStyle = () => {
             </Link>
 
             <Link
-              href="/shop#formal"
+              href="/shop?category=formal"
               className="zoom-card md:col-span-2 w-full h-48 sm:h-80 cursor-pointer relative"
             >
               <Image
@@ -44,7 +44,7 @@ const BrowseStyle = () => {
             </Link>
 
             <Link
-              href="/shop#party"
+              href="/shop?category=party"
               className="zoom-card md:col-span-2 w-full h-48 sm:h-80 cursor-pointer relative"
             >
               <Image
@@ -60,7 +60,7 @@ const BrowseStyle = () => {
             </Link>
 
             <Link
-              href="/shop#gym"
+              href="/shop?category=gym"
               className="zoom-card w-full h-48 sm:h-80 cursor-pointer relative"
             >
               <Image

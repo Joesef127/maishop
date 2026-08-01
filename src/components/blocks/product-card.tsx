@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import {useRouter} from "next/navigation";
+import React, { useState } from "react";
+import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -27,6 +27,7 @@ const ProductCard = (props: ProductCardProps) => {
   );
 
   const router = useRouter();
+  const isShopPage = usePathname() === "/shop";
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -76,7 +77,7 @@ const ProductCard = (props: ProductCardProps) => {
         onMouseEnter={() => setMouseEntered(true)}
         onMouseLeave={() => setMouseEntered(false)}
         onClick={() => router.push(`/shop/${props.id}`)}
-        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 min-w-64 max-w-68 sm:min-w-96 xl:min-w-full xl:max-w-full cursor-pointer"
+        className={`group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 ${isShopPage ? "min-w-24 max-w-72" : "min-w-64 md:min-w-96 max-w-68"} xl:min-w-full xl:max-w-full cursor-pointer`}
       >
         <Image
           src={image}
@@ -165,11 +166,11 @@ const ProductCard = (props: ProductCardProps) => {
                 ${(price / (1 - discountPercentage! / 100)).toFixed(2)}
               </p>
             )}
-            {/* {hasDiscount && (
+            {hasDiscount && (
               <p className="text-xs lg:text-sm bg-destructive/10 rounded-2xl px-2 py-1 font-normal text-red-500">
                 -{discountPercentage}%
               </p>
-            )} */}
+            )}
 
 
             <div>

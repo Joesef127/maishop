@@ -70,7 +70,14 @@ export default function ShopPage() {
 
     if (category) list = list.filter((p) => p.category === category);
     if (type) list = list.filter((p) => p.type === type);
-    if (query) list = list.filter((p) => p.title.toLowerCase().includes(query));
+    if (query) {
+      list = list.filter(
+        (p) =>
+          p.title.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query) ||
+          p.type.toLowerCase().includes(query),
+      );
+    }
     if (colors.length) list = list.filter((p) => p.colors.some((c) => colors.includes(c)));
     if (sizes.length) list = list.filter((p) => p.sizes.some((s) => sizes.includes(s)));
     if (min !== undefined) list = list.filter((p) => p.price >= min);

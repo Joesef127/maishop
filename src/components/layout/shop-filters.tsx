@@ -97,14 +97,27 @@ export function ShopFilters({ className, onApplied }: ShopFiltersProps) {
     });
   };
 
+  const handleReset = () => {
+    setPriceRange([MIN_PRICE, MAX_PRICE]);
+    setSelectedColors([]);
+    setSelectedSizes([]);
+    updateParams({
+      min: null,
+      max: null,
+      colors: null,
+      sizes: null,
+    });
+    router.push("/shop")
+  };
+
   return (
-    <div className={cn("flex flex-col gap-6 rounded-3xl border border-border p-6", className)}>
-      <div className="flex items-center justify-between">
+    <div className={cn("flex flex-col rounded-3xl border border-border py-6", className)}>
+      <div className="flex items-center justify-between px-6 mb-3">
         <h2 className="text-xl font-bold">Filters</h2>
         <SlidersHorizontal className="w-5 h-5 text-muted-foreground" />
       </div>
 
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3 px-6 mb-6">
         {productTypes.map((t) => (
           <li key={t.value}>
             <button
@@ -127,13 +140,13 @@ export function ShopFilters({ className, onApplied }: ShopFiltersProps) {
       <Accordion
         type="multiple"
         defaultValue={["price", "colors", "size", "dress-style"]}
-        className="border-none"
+        className="border-none bg-background"
       >
         <AccordionItem value="price">
-          <AccordionTrigger className="p-0 hover:no-underline">
+          <AccordionTrigger className="px-6 hover:no-underline">
             <span className="text-base font-semibold text-foreground">Price</span>
           </AccordionTrigger>
-          <AccordionContent className="px-0">
+          <AccordionContent className="px-4">
             <Slider
               min={MIN_PRICE}
               max={MAX_PRICE}
@@ -150,10 +163,10 @@ export function ShopFilters({ className, onApplied }: ShopFiltersProps) {
         </AccordionItem>
 
         <AccordionItem value="colors">
-          <AccordionTrigger className="p-0 hover:no-underline">
+          <AccordionTrigger className="px-6 hover:no-underline">
             <span className="text-base font-semibold text-foreground">Colors</span>
           </AccordionTrigger>
-          <AccordionContent className="px-0">
+          <AccordionContent className="px-4">
             <div className="grid grid-cols-5 gap-3 pt-2">
               {colorPalette.map((c) => {
                 const isSelected = selectedColors.includes(c.hex);
@@ -183,10 +196,10 @@ export function ShopFilters({ className, onApplied }: ShopFiltersProps) {
         </AccordionItem>
 
         <AccordionItem value="size">
-          <AccordionTrigger className="p-0 hover:no-underline">
+          <AccordionTrigger className="px-6 hover:no-underline">
             <span className="text-base font-semibold text-foreground">Size</span>
           </AccordionTrigger>
-          <AccordionContent className="px-0">
+          <AccordionContent className="px-4">
             <div className="flex flex-wrap gap-2 pt-2">
               {sizeOptions.map((s) => (
                 <button
@@ -208,10 +221,10 @@ export function ShopFilters({ className, onApplied }: ShopFiltersProps) {
         </AccordionItem>
 
         <AccordionItem value="dress-style" className="border-b-0!">
-          <AccordionTrigger className="p-0 hover:no-underline">
+          <AccordionTrigger className="px-6 hover:no-underline">
             <span className="text-base font-semibold text-foreground">Dress Style</span>
           </AccordionTrigger>
-          <AccordionContent className="px-0">
+          <AccordionContent className="px-4">
             <ul className="flex flex-col gap-3 pt-2">
               {dressStyles.map((d) => (
                 <li key={d.value}>
@@ -233,9 +246,17 @@ export function ShopFilters({ className, onApplied }: ShopFiltersProps) {
         </AccordionItem>
       </Accordion>
 
+      <div className="px-6">
       <Button variant="primary" size="custom" className="w-full justify-center" onClick={handleApply}>
         Apply Filter
       </Button>
+
+      {/*  create a reset filter button */}
+      <Button variant="secondary" size="custom" className="w-full justify-center mt-2" onClick={handleReset}>
+        Reset Filter
+      </Button>
+
+      </div>
     </div>
   );
 }

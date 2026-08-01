@@ -32,7 +32,7 @@ export const navItems: NavItem[] = [
             {
                 title: "Party",
                 href: "/shop?category=party",
-                description: "Watches, bags, jewelry, and other fashion accessories for special occasions.",
+                description: "Gowns, cocktail dresses, and statement partywear for special occasions.",
             },
             {
                 title: "Gym",

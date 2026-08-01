@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 import ProductCard from "@/components/blocks/product-card";
-import { ShopFilters } from "@/components/blocks/shop-filters";
+import { ShopFilters } from "@/components/layout/shop-filters";
 import { allProducts } from "@/data/products-catalog";
 import { Button } from "@/components/ui/button";
 import {
@@ -51,11 +51,15 @@ export default function ShopPage() {
     () => searchParams?.get("sizes")?.split(",").filter(Boolean) ?? [],
     [searchParams],
   );
-  const min = searchParams?.get("min") ? Number(searchParams?.get("min")) : undefined;
-  const max = searchParams?.get("max") ? Number(searchParams?.get("max")) : undefined;
+  const parseNumber = (raw: string | null | undefined) => {
+    if (!raw) return undefined;
+    const parsed = Number(raw);
+    return Number.isFinite(parsed) ? parsed : undefined;
+  };
+  const min = parseNumber(searchParams?.get("min"));
+  const max = parseNumber(searchParams?.get("max"));
   const sort = searchParams?.get("sort") ?? "popular";
-  const requestedPage = Math.max(1, Number(searchParams?.get("page") ?? 1));
-
+  const requestedPage = Math.max(1, Math.trunc(parseNumber(searchParams?.get("page")) ?? 1));
   const filtered = useMemo(() => {
     let list = allProducts.filter((p) => p.available !== false);
 

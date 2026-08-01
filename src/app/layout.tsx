@@ -6,6 +6,7 @@ import AnnouncementBar from "@/components/layout/announcement-bar";
 import {ThemeProvider} from "@/providers/theme-provider";
 import Footer from "@/components/layout/footer";
 import {Toaster} from "@/components/ui/sonner";
+import ModalProvider from "@/components/modals/modal-provider";
 
 export const metadata: Metadata = {
     title: "MAISHOP",
@@ -80,6 +81,7 @@ export default function RootLayout({
             {children}
             <Footer/>
             <Toaster />
+            <ModalProvider />
         </ThemeProvider>
         </body>
         </html>

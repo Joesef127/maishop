@@ -29,6 +29,74 @@ import maishop_brown from "@/assets/images/maishop_brown.png";
 import maishop_white from "@/assets/images/maishop_white.png";
 import maishop_logo from "@/assets/images/maishop_logo.png";
 
+import abstract_graphic_tshirt from "@/assets/images/products/abstract_graphic_tshirt.jpg";
+import abstract_graphic_tshirt2 from "@/assets/images/products/abstract_graphic_tshirt2.jpg";
+import abstract_graphic_tshirt3 from "@/assets/images/products/abstract_graphic_tshirt3.jpg";
+import abstract_graphic_tshirt4 from "@/assets/images/products/abstract_graphic_tshirt4.jpg";
+import casual_grey_tshirt from "@/assets/images/products/casual_grey_tshirt.jpg";
+import casual_grey_tshirt2 from "@/assets/images/products/casual_grey_tshirt2.jpg";
+import casual_grey_tshirt3 from "@/assets/images/products/casual_grey_tshirt3.jpg";
+import casual_grey_tshirt4 from "@/assets/images/products/casual_grey_tshirt4.jpg";
+import checkered_shirt from "@/assets/images/products/checkered_shirt.jpg";
+import checkered_shirt2 from "@/assets/images/products/checkered_shirt2.jpg";
+import checkered_shirt3 from "@/assets/images/products/checkered_shirt3.jpg";
+import checkered_shirt4 from "@/assets/images/products/checkered_shirt4.jpg";
+import courage_graphic_tshirt from "@/assets/images/products/courage_graphic_tshirt.jpg";
+import courage_graphic_tshirt2 from "@/assets/images/products/courage_graphic_tshirt2.jpg";
+import courage_graphic_tshirt3 from "@/assets/images/products/courage_graphic_tshirt3.jpg";
+import courage_graphic_tshirt4 from "@/assets/images/products/courage_graphic_tshirt4.jpg";
+import faded_jeans from "@/assets/images/products/faded_jeans.jpg";
+import faded_jeans2 from "@/assets/images/products/faded_jeans2.jpg";
+import faded_jeans3 from "@/assets/images/products/faded_jeans3.jpg";
+import faded_jeans4 from "@/assets/images/products/faded_jeans4.jpg";
+import formal_grid_blazer from "@/assets/images/products/formal_grid_blazer.jpg";
+import formal_grid_blazer2 from "@/assets/images/products/formal_grid_blazer2.jpg";
+import formal_grid_blazer3 from "@/assets/images/products/formal_grid_blazer3.jpg";
+import formal_grid_blazer4 from "@/assets/images/products/formal_grid_blazer4.jpg";
+import gradient_graphic_tshirt from "@/assets/images/products/gradient_graphic_tshirt.jpg";
+import gradient_graphic_tshirt2 from "@/assets/images/products/gradient_graphic_tshirt2.jpg";
+import gradient_graphic_tshirt3 from "@/assets/images/products/gradient_graphic_tshirt3.jpg";
+import gradient_graphic_tshirt4 from "@/assets/images/products/gradient_graphic_tshirt4.jpg";
+import gym_tank_top from "@/assets/images/products/gym_tank_top.jpg";
+import loose_fit_bermuda_shorts from "@/assets/images/products/loose_fit_bermuda_shorts.jpg";
+import loose_fit_bermuda_shorts2 from "@/assets/images/products/loose_fit_bermuda_shorts2.jpg";
+import loose_fit_bermuda_shorts3 from "@/assets/images/products/loose_fit_bermuda_shorts3.jpg";
+import loose_fit_bermuda_shorts4 from "@/assets/images/products/loose_fit_bermuda_shorts4.jpg";
+import one_life_graphic_tshirt from "@/assets/images/products/one_life_graphic_tshirt.jpg";
+import one_life_graphic_tshirt2 from "@/assets/images/products/one_life_graphic_tshirt2.jpg";
+import one_life_graphic_tshirt3 from "@/assets/images/products/one_life_graphic_tshirt3.jpg";
+import one_life_graphic_tshirt4 from "@/assets/images/products/one_life_graphic_tshirt4.jpg";
+import party_off_shoulder_gown from "@/assets/images/products/party_off_shoulder_gown.jpg";
+import polo_with_contrast_trims from "@/assets/images/products/polo_with_contrast_trims.jpg";
+import polo_with_contrast_trims2 from "@/assets/images/products/polo_with_contrast_trims2.jpg";
+import polo_with_contrast_trims3 from "@/assets/images/products/polo_with_contrast_trims3.jpg";
+import polo_with_contrast_trims4 from "@/assets/images/products/polo_with_contrast_trims4.jpg";
+import polo_with_tipping_details from "@/assets/images/products/polo_with_tipping_details.jpg";
+import polo_with_tipping_details2 from "@/assets/images/products/polo_with_tipping_details2.jpg";
+import polo_with_tipping_details3 from "@/assets/images/products/polo_with_tipping_details3.jpg";
+import polo_with_tipping_details4 from "@/assets/images/products/polo_with_tipping_details4.jpg";
+import skinny_fit_jeans from "@/assets/images/products/skinny_fit_jeans.jpg";
+import skinny_fit_jeans2 from "@/assets/images/products/skinny_fit_jeans2.jpg";
+import skinny_fit_jeans3 from "@/assets/images/products/skinny_fit_jeans3.jpg";
+import skinny_fit_jeans4 from "@/assets/images/products/skinny_fit_jeans4.jpg";
+import sleeve_striped_tshirt from "@/assets/images/products/sleeve_striped_tshirt.jpg";
+import sleeve_striped_tshirt2 from "@/assets/images/products/sleeve_striped_tshirt2.jpg";
+import sleeve_striped_tshirt3 from "@/assets/images/products/sleeve_striped_tshirt3.jpg";
+import sleeve_striped_tshirt4 from "@/assets/images/products/sleeve_striped_tshirt4.jpg";
+import tshirt_with_black_sleeves from "@/assets/images/products/tshirt_with_black_sleeves.jpg";
+import tshirt_with_black_sleeves2 from "@/assets/images/products/tshirt_with_black_sleeves2.jpg";
+import tshirt_with_black_sleeves3 from "@/assets/images/products/tshirt_with_black_sleeves3.jpg";
+import tshirt_with_black_sleeves4 from "@/assets/images/products/tshirt_with_black_sleeves4.jpg";
+import tshirt_with_tape_details from "@/assets/images/products/tshirt_with_tape_details.jpg";
+import tshirt_with_tape_details2 from "@/assets/images/products/tshirt_with_tape_details2.jpg";
+import tshirt_with_tape_details3 from "@/assets/images/products/tshirt_with_tape_details3.jpg";
+import tshirt_with_tape_details4 from "@/assets/images/products/tshirt_with_tape_details4.jpg";
+import tshirt_with_tape_details5 from "@/assets/images/products/tshirt_with_tape_details5.jpg";
+import vertical_striped_shirt from "@/assets/images/products/vertical_striped_shirt.jpg";
+import vertical_striped_shirt2 from "@/assets/images/products/vertical_striped_shirt2.jpg";
+import vertical_striped_shirt3 from "@/assets/images/products/vertical_striped_shirt3.jpg";
+import vertical_striped_shirt4 from "@/assets/images/products/vertical_striped_shirt4.jpg";
+
 export const images = {
     hero_bg,
     image1,
@@ -60,4 +128,91 @@ export const images = {
     maishop_brown,
     maishop_white,
     maishop_logo,
+}
+
+export const products = {
+    abstract_graphic_tshirt,
+    abstract_graphic_tshirt2,
+    abstract_graphic_tshirt3,
+    abstract_graphic_tshirt4,
+
+    casual_grey_tshirt,
+    casual_grey_tshirt2,
+    casual_grey_tshirt3,
+    casual_grey_tshirt4,
+
+    checkered_shirt,
+    checkered_shirt2,
+    checkered_shirt3,
+    checkered_shirt4,
+
+    courage_graphic_tshirt,
+    courage_graphic_tshirt2,
+    courage_graphic_tshirt3,
+    courage_graphic_tshirt4,
+
+    faded_jeans,
+    faded_jeans2,
+    faded_jeans3,
+    faded_jeans4,
+
+    formal_grid_blazer,
+    formal_grid_blazer2,
+    formal_grid_blazer3,
+    formal_grid_blazer4,
+
+    gradient_graphic_tshirt,
+    gradient_graphic_tshirt2,
+    gradient_graphic_tshirt3,
+    gradient_graphic_tshirt4,
+
+    gym_tank_top,
+
+    loose_fit_bermuda_shorts,
+    loose_fit_bermuda_shorts2,
+    loose_fit_bermuda_shorts3,
+    loose_fit_bermuda_shorts4,
+
+    one_life_graphic_tshirt,
+    one_life_graphic_tshirt2,
+    one_life_graphic_tshirt3,
+    one_life_graphic_tshirt4,
+
+    party_off_shoulder_gown,
+
+    polo_with_contrast_trims,
+    polo_with_contrast_trims2,
+    polo_with_contrast_trims3,
+    polo_with_contrast_trims4,
+    
+    polo_with_tipping_details,
+    polo_with_tipping_details2,
+    polo_with_tipping_details3,
+    polo_with_tipping_details4,
+
+    skinny_fit_jeans,
+    skinny_fit_jeans2,
+    skinny_fit_jeans3,
+    skinny_fit_jeans4,
+
+    sleeve_striped_tshirt,
+    sleeve_striped_tshirt2,
+    sleeve_striped_tshirt3,
+    sleeve_striped_tshirt4,
+
+    tshirt_with_black_sleeves,
+    tshirt_with_black_sleeves2,
+    tshirt_with_black_sleeves3,
+    tshirt_with_black_sleeves4,
+
+    tshirt_with_tape_details,
+    tshirt_with_tape_details2,
+    tshirt_with_tape_details3,
+    tshirt_with_tape_details4,
+    tshirt_with_tape_details5,
+    
+    vertical_striped_shirt,
+    vertical_striped_shirt2,
+    vertical_striped_shirt3,
+    vertical_striped_shirt4,
 }

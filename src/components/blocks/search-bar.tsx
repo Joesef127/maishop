@@ -68,21 +68,27 @@ const SearchBar = ({ fullWidth = false }: SearchBarProps) => {
                 </button>
             </form>
 
-            {open && suggestions.length > 0 && (
-                <ul className="absolute top-full mt-2 w-full bg-popover rounded-lg shadow-md ring-1 ring-foreground/10 z-50 overflow-hidden">
-                    {suggestions.map((p) => (
-                        <li key={p.id}>
-                            <button
-                                type="button"
-                                onClick={() => handleSelect(p.id)}
-                                className="w-full text-left px-4 py-2 text-sm hover:bg-muted"
-                            >
-                                {p.title}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+            {open && query.trim() ? (
+                suggestions.length > 0 ? (
+                    <ul className="absolute top-full mt-2 w-full bg-popover rounded-lg shadow-md ring-1 ring-foreground/10 z-50 overflow-hidden">
+                        {suggestions.map((p) => (
+                            <li key={p.id}>
+                                <button
+                                    type="button"
+                                    onClick={() => handleSelect(p.id)}
+                                    className="w-full text-left px-4 py-2 text-sm hover:bg-muted"
+                                >
+                                    {p.title}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <div className="absolute top-full mt-2 w-full bg-popover rounded-lg shadow-md ring-1 ring-foreground/10 z-50 px-4 py-3 text-sm text-muted-foreground">
+                        No products found for &quot;{query.trim()}&quot;
+                    </div>
+                )
+            ) : null}
         </div>
     );
 };

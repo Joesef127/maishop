@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import {useRouter} from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { toast } from "sonner";
 import StarRating from "./star-rating";
 import { ProductCardProps } from "@/data/home-data";
 import { Heart, Plus } from "lucide-react";
 import { useCartStore } from "@/stores/cart-store";
 import { useWishStore } from "@/stores/wish-store";
 import { RiHeartFill } from "@remixicon/react";
-import { toast } from "sonner";
-import Link from "next/link";
 
 const ProductCard = (props: ProductCardProps) => {
   const { title, image, rating, price, discountPercentage, hasDiscount } =
@@ -25,7 +26,10 @@ const ProductCard = (props: ProductCardProps) => {
       state.hasHydrated && state.items.some((item) => item.id === props.id),
   );
 
-  const handleAddToCart = () => {
+  const router = useRouter();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
     const alreadyInCart = cartItems.some((item) => item.id === props.id);
     addCartItem(props);
     if (alreadyInCart) {
@@ -39,7 +43,8 @@ const ProductCard = (props: ProductCardProps) => {
     }
   };
 
-  const handleAddToWish = () => {
+  const handleAddToWish = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (!hasHydrated) return;
 
     if (isWishlisted) {
@@ -55,7 +60,8 @@ const ProductCard = (props: ProductCardProps) => {
     });
   };
 
-  const handleRemoveFromWish = () => {
+  const handleRemoveFromWish = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (!hasHydrated) return;
 
     removeWishItem(props.id);
@@ -69,11 +75,12 @@ const ProductCard = (props: ProductCardProps) => {
       <figure
         onMouseEnter={() => setMouseEntered(true)}
         onMouseLeave={() => setMouseEntered(false)}
-        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 min-w-64 sm:min-w-96 xl:min-w-full"
+        onClick={() => router.push(`/shop/${props.id}`)}
+        className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 min-w-64 max-w-68 sm:min-w-96 xl:min-w-full xl:max-w-full cursor-pointer"
       >
         <Image
           src={image}
-          alt="Product Image"
+          alt={title}
           className="object-cover object-center w-full h-full"
         />
 

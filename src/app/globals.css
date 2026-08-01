@@ -345,3 +345,17 @@ h6 {
 .zoom-card:hover img {
   transform: scale(1.1);
 }
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+.typing-cursor {
+  border-right: 4px solid white;
+  animation: blink 0.7s step-end infinite;
+}
+
+@utility text-stroke-brown {
+  -webkit-text-stroke: 1px #ffffff;
+  /*text-stroke: 2px #896246;*/
+  /*color: transparent;*/
+}

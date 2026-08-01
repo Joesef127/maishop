@@ -1,9 +1,10 @@
 import { ProductCardProps, newArrivalsData, topSellingData, additionalProductsData } from "@/data/home-data";
 import { suggestedData } from "./product-details-data";
 
-const allProducts: ProductCardProps[] = [...newArrivalsData, ...topSellingData, ...suggestedData, ...additionalProductsData];
-
-const productMap = new Map(allProducts.map((p) => [p.id, p]));
+const productMap = new Map<string, ProductCardProps>(
+    [...newArrivalsData, ...topSellingData, ...suggestedData, ...additionalProductsData].map((p) => [p.id, p]),
+);
+const allProducts: ProductCardProps[] = Array.from(productMap.values());
 
 export function getProductById(id: string): ProductCardProps | undefined {
     return productMap.get(id);

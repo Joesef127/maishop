@@ -121,7 +121,7 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
             </div>
           ) : (
               items.map((item) => (
-                  <div key={item.id} className={`flex gap-3 ${item.unavailable ? "opacity-50" : ""}`}>
+                  <div key={item.id} className={`flex gap-3 transition-opacity ${item.unavailable ? "opacity-50" : ""}`}>
                     <div className="relative w-16 sm:w-20 h-16 sm:h-20 rounded-lg overflow-hidden bg-muted shrink-0">
                       <Image src={item.image} alt={item.title} fill className="object-cover object-center" />
                     </div>
@@ -137,16 +137,16 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                       <div className="flex items-center gap-2 mt-auto">
                         <div className={`flex items-center border rounded-md ${item.unavailable ? "pointer-events-none" : ""}`}>
                           <button
-                              className="px-2 py-1 hover:bg-muted transition-colors"
+                              className="px-2 py-1 hover:bg-muted active:scale-90 transition-all"
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
                               aria-label="Decrease quantity"
                               disabled={item.unavailable}
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="px-2 text-sm min-w-6 text-center">{item.quantity}</span>
+                          <span className="px-2 text-sm min-w-6 text-center font-medium">{item.quantity}</span>
                           <button
-                              className="px-2 py-1 hover:bg-muted transition-colors"
+                              className="px-2 py-1 hover:bg-muted active:scale-90 transition-all"
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               aria-label="Increase quantity"
                               disabled={item.unavailable}
@@ -155,7 +155,7 @@ export function CartDrawer({ trigger }: CartDrawerProps) {
                           </button>
                         </div>
                         <button
-                            className="ml-auto text-muted-foreground hover:text-destructive transition-colors"
+                            className="ml-auto text-muted-foreground hover:text-destructive active:scale-90 transition-all"
                             onClick={() => {
                               removeItem(item.id);
                               toast.success("Item removed", {

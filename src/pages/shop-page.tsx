@@ -23,6 +23,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { motion, AnimatePresence } from "motion/react";
 
 const PAGE_SIZE = 9;
 
@@ -131,12 +132,22 @@ export default function ShopPage() {
   return (
     <main className="container py-8 sm:py-12">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
-        <aside className="hidden lg:block">
+        <motion.aside
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden lg:block"
+        >
           <ShopFilters />
-        </aside>
+        </motion.aside>
 
         <section className="flex flex-col gap-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-wrap items-center justify-between gap-4"
+          >
             <h1 className="text-2xl font-bold capitalize sm:text-3xl">{heading}</h1>
 
             <Sheet open={filtersOpen} onOpenChange={setFiltersOpen}>
@@ -149,7 +160,7 @@ export default function ShopPage() {
                 <ShopFilters onApplied={() => setFiltersOpen(false)} className="border-none" />
               </SheetContent>
             </Sheet>
-          </div>
+          </motion.div>
 
           <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
             <p>
@@ -175,17 +186,30 @@ export default function ShopPage() {
             </div>
           </div>
 
-          {paginated.length > 0 ? (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3">
-              {paginated.map((product) => (
-                <ProductCard key={product.id} {...product} />
-              ))}
-            </div>
-          ) : (
-            <div className="py-16 text-center text-muted-foreground">
-              No products match your filters. Try adjusting them.
-            </div>
-          )}
+          <AnimatePresence mode="wait">
+            {paginated.length > 0 ? (
+              <motion.div
+                key={`${category}-${type}-${query}-${sort}-${safePage}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3"
+              >
+                {paginated.map((product) => (
+                  <ProductCard key={product.id} {...product} />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="py-16 text-center text-muted-foreground"
+              >
+                No products match your filters. Try adjusting them.
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {totalPages > 1 && (
             <Pagination>

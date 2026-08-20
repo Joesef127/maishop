@@ -94,7 +94,7 @@ export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
                         items.map((item) => (
                             <div
                                 key={item.id}
-                                className={`flex gap-3 ${item.unavailable ? "opacity-50" : ""}`}
+                                className={`flex gap-3 transition-opacity ${item.unavailable ? "opacity-50" : ""}`}
                             >
                                 <div className="relative w-16 sm:w-20 h-16 sm:h-20 rounded-lg overflow-hidden bg-muted shrink-0">
                                     <Image
@@ -135,7 +135,7 @@ export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
                                                                 (1 -
                                                                     item.discountPercentage /
                                                                         100)
-                                                            ).toFixed(2)}
+                                                                ).toFixed(2)}
                                                         </span>
                                                     )}
                                             </div>
@@ -143,7 +143,7 @@ export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
                                     )}
                                     <div className="flex items-center gap-2 mt-auto">
                                         <button
-                                            className={`flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors ${item.unavailable ? "pointer-events-none opacity-50" : ""}`}
+                                            className={`flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground active:scale-95 transition-all ${item.unavailable ? "pointer-events-none opacity-50" : ""}`}
                                             onClick={() =>
                                                 handleAddToCart(item)
                                             }
@@ -154,7 +154,7 @@ export function WishlistDrawer({ trigger }: WishlistDrawerProps) {
                                             Add to Cart
                                         </button>
                                         <button
-                                            className="ml-auto text-muted-foreground hover:text-destructive transition-colors"
+                                            className="ml-auto text-muted-foreground hover:text-destructive active:scale-90 transition-all"
                                             onClick={() => {
                                                 removeWishItem(item.id);
                                                 toast.success(

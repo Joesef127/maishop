@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {usePathname, useRouter} from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -11,10 +11,10 @@ import { Heart, Plus } from "lucide-react";
 import { useCartStore } from "@/stores/cart-store";
 import { useWishStore } from "@/stores/wish-store";
 import { RiHeartFill } from "@remixicon/react";
+import { motion } from "motion/react";
 
 const ProductCard = (props: ProductCardProps) => {
-  const { title, image, rating, price, discountPercentage, hasDiscount } =
-    props;
+  const { title, image, rating, price, discountPercentage, hasDiscount } = props;
   const [mouseEntered, setMouseEntered] = useState(false);
   const addCartItem = useCartStore((state) => state.addItem);
   const cartItems = useCartStore((state) => state.items);
@@ -22,8 +22,8 @@ const ProductCard = (props: ProductCardProps) => {
   const addWishItem = useWishStore((state) => state.addWishItem);
   const removeWishItem = useWishStore((state) => state.removeWishItem);
   const hasHydrated = useWishStore((state) => state.hasHydrated);
-  const isWishlisted = useWishStore((state) =>
-      state.hasHydrated && state.items.some((item) => item.id === props.id),
+  const isWishlisted = useWishStore(
+    (state) => state.hasHydrated && state.items.some((item) => item.id === props.id),
   );
 
   const router = useRouter();
@@ -72,79 +72,102 @@ const ProductCard = (props: ProductCardProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 relative">
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -4 }}
+      className="flex flex-col gap-4 relative transition-shadow"
+    >
       <figure
         onMouseEnter={() => setMouseEntered(true)}
         onMouseLeave={() => setMouseEntered(false)}
         onClick={() => router.push(`/shop/${props.id}`)}
-        className={`group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 ${isShopPage ? "min-w-24 max-w-72" : "min-w-64 md:min-w-96 max-w-68"} xl:min-w-full xl:max-w-full cursor-pointer`}
+        className={`group relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 ${
+          isShopPage ? "min-w-24 max-w-72" : "min-w-64 md:min-w-96 max-w-68"
+        } xl:min-w-full xl:max-w-full cursor-pointer`}
       >
         <Image
           src={image}
           alt={title}
-          className="object-cover object-center w-full h-full"
+          className="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out"
         />
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
           title={cartHasHydrated ? "Add to cart" : "Loading cart"}
           disabled={!cartHasHydrated}
           aria-disabled={!cartHasHydrated}
-          className="sm:hidden absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
+          className="sm:hidden absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white backdrop-blur-xs"
           onClick={handleAddToCart}
         >
           <Plus className="w-4 sm:w-6 h-4 sm:h-6" />
-        </button>
+        </motion.button>
         {hasHydrated && isWishlisted ? (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
             title="Remove from wishlist"
-            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
+            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white backdrop-blur-xs"
             onClick={handleRemoveFromWish}
           >
             <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600" />
-          </button>
+          </motion.button>
         ) : (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
             title={hasHydrated ? "Add to wishlist" : "Loading wishlist"}
             disabled={!hasHydrated}
             aria-disabled={!hasHydrated}
-            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
+            className="sm:hidden absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white backdrop-blur-xs"
             onClick={handleAddToWish}
           >
             <Heart className="w-4 sm:w-6 h-4 sm:h-6" />
-          </button>
+          </motion.button>
         )}
 
         <div
-          className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex gap-2 ${mouseEntered ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 bg-black/30 items-center justify-center transition-opacity duration-300 hidden sm:flex gap-2 ${
+            mouseEntered ? "opacity-100" : "opacity-0"
+          }`}
         >
           <div className="grid grid-cols-1 grid-rows-2 gap-6">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.9 }}
               title={cartHasHydrated ? "Add to cart" : "Loading cart"}
               disabled={!cartHasHydrated}
               aria-disabled={!cartHasHydrated}
-              className="absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white"
+              className="absolute top-3 right-3 rounded-full p-1.5 bg-black/50 text-white backdrop-blur-xs"
               onClick={handleAddToCart}
             >
               <Plus className="w-4 sm:w-6 h-4 sm:h-6" />
-            </button>
+            </motion.button>
             {hasHydrated && isWishlisted ? (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
                 title="Remove from wishlist"
-                className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
+                className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white backdrop-blur-xs"
                 onClick={handleRemoveFromWish}
               >
                 <RiHeartFill className="w-4 sm:w-6 h-4 sm:h-6 text-red-600" />
-              </button>
+              </motion.button>
             ) : (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
                 title={hasHydrated ? "Add to wishlist" : "Loading wishlist"}
                 disabled={!hasHydrated}
                 aria-disabled={!hasHydrated}
-                className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white"
+                className="absolute top-3 left-3 rounded-full p-1.5 bg-black/50 text-white backdrop-blur-xs"
                 onClick={handleAddToWish}
               >
                 <Heart className="w-4 sm:w-6 h-4 sm:h-6" />
-              </button>
+              </motion.button>
             )}
           </div>
         </div>
@@ -152,7 +175,10 @@ const ProductCard = (props: ProductCardProps) => {
 
       <div className="flex flex-col justify-between gap-4">
         <div className="flex flex-col gap-2">
-          <Link href={`/shop/${props.id}`} className="text-base sm:text-lg lg:text-xl hover:text-sidebar-primary font-semibold capitalize">
+          <Link
+            href={`/shop/${props.id}`}
+            className="text-base sm:text-lg lg:text-xl hover:text-sidebar-primary font-semibold capitalize transition-colors"
+          >
             <h2>{title}</h2>
           </Link>
 
@@ -167,11 +193,10 @@ const ProductCard = (props: ProductCardProps) => {
               </p>
             )}
             {hasDiscount && (
-              <p className="text-xs lg:text-sm bg-destructive/10 rounded-2xl px-2 py-1 font-normal text-red-500">
+              <span className="text-xs lg:text-sm bg-destructive/10 rounded-2xl px-2 py-1 font-normal text-red-500">
                 -{discountPercentage}%
-              </p>
+              </span>
             )}
-
 
             <div>
               <StarRating rating={rating} readOnly={true} />
@@ -179,7 +204,7 @@ const ProductCard = (props: ProductCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

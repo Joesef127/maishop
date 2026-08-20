@@ -13,50 +13,80 @@ export interface DropdownItem {
 }
 
 export const navItems: NavItem[] = [
+    // {
+    //     title: "Shop",
+    //     link: "/shop",
+    //     description: "Browse our full catalog and categories.",
+    //     hasDropdown: true,
+    //     dropdownItems: [
+    //         {
+    //             title: "Casual",
+    //             href: "/shop?category=casual",
+    //             description: "T-shirts, jeans, jackets, and casual wear for everyday style.",
+    //         },
+    //         {
+    //             title: "Formal",
+    //             href: "/shop?category=formal",
+    //             description: "Suits, blazers, dress shirts, and formal wear for professional occasions.",
+    //         },
+    //         {
+    //             title: "Party",
+    //             href: "/shop?category=party",
+    //             description: "Gowns, cocktail dresses, and statement partywear for special occasions.",
+    //         },
+    //         {
+    //             title: "Gym",
+    //             href: "/shop?category=gym",
+    //             description: "Sneakers, pumps, shorts, and other gym wears for your workout needs.",
+    //         }
+    //     ]
+    // },
     {
         title: "Shop",
         link: "/shop",
         description: "Browse our full catalog and categories.",
-        hasDropdown: true,
-        dropdownItems: [
-            {
-                title: "Casual",
-                href: "/shop?category=casual",
-                description: "T-shirts, jeans, jackets, and casual wear for everyday style.",
-            },
-            {
-                title: "Formal",
-                href: "/shop?category=formal",
-                description: "Suits, blazers, dress shirts, and formal wear for professional occasions.",
-            },
-            {
-                title: "Party",
-                href: "/shop?category=party",
-                description: "Gowns, cocktail dresses, and statement partywear for special occasions.",
-            },
-            {
-                title: "Gym",
-                href: "/shop?category=gym",
-                description: "Sneakers, pumps, shorts, and other gym wears for your workout needs.",
-            }
-        ]
-    },
-    {
-        title: "On Sale",
-        link: "/sales",
-        description: "Check out our latest discounted products.",
         hasDropdown: false
     },
     {
-        title: "New Arrivals",
-        link: "/arrivals",
-        description: "Explore the freshest additions to our collection.",
+        title: "Casual",
+        link: "/shop?category=casual",
+        description: "T-shirts, jeans, jackets, and casual wear for everyday style.",
         hasDropdown: false
     },
     {
-        title: "Brands",
-        link: "/brands",
-        description: "Browse products from your favorite designers.",
+        title: "Formal",
+        link: "/shop?category=formal",
+        description: "Suits, blazers, dress shirts, and formal wear for professional occasions.",
         hasDropdown: false
-    }
+    },
+    {
+        title: "Party",
+        link: "/shop?category=party",
+        description: "Gowns, cocktail dresses, and statement partywear for special occasions.",
+        hasDropdown: false
+    },
+    {
+        title: "Gym",
+        link: "/shop?category=gym",
+        description: "Sneakers, pumps, shorts, and other gym wears for your workout needs.",
+        hasDropdown: false
+    },
+    // {
+    //     title: "On Sale",
+    //     link: "/sales",
+    //     description: "Check out our latest discounted products.",
+    //     hasDropdown: false
+    // },
+    // {
+    //     title: "New Arrivals",
+    //     link: "/arrivals",
+    //     description: "Explore the freshest additions to our collection.",
+    //     hasDropdown: false
+    // },
+    // {
+    //     title: "Brands",
+    //     link: "/brands",
+    //     description: "Browse products from your favorite designers.",
+    //     hasDropdown: false
+    // }
 ];

@@ -51,7 +51,7 @@ const Header = ({
     const isWithinHeroSection =
         hasScrolledPastHeroSection === false && isHomePage;
 
-    const headerStyle = `shadow-sm bg-background ${isWithinHeroSection ? "supports-[backdrop-filter]:bg-background/10 backdrop-blur" : "backdrop-blur-3xl supports-[backdrop-filter]:bg-background"}`;
+    const headerStyle = `shadow-sm bg-background ${isWithinHeroSection ? "supports-[backdrop-filter]:bg-background/10 backdrop-blur" : "backdrop-blur-xl supports-[backdrop-filter]:bg-background"}`;
 
     return (
         <header

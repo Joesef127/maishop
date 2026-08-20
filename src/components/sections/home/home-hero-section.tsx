@@ -46,16 +46,11 @@ const HomeHeroSection = () => {
 
   return (
     <section className="container">
-      <div className="flex flex-col py-12 md:py-20 xl:py-24 gap-8 xl:gap-10 z-20">
-        <h1 className="text-white tracking-wider text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl font-bold md:max-w-2xl xl:max-w-3xl 2xl:max-w-5xl text-wrap">
-          FIND {" "}
-          <span className="block sm:inline text-stroke-brown text-[#896246]">
-            {displayedText}
-          </span>
-          {/*<span className="typing-cursor ml-1" /> */}
-          {" "} THAT MATCHES YOUR STYLE
+      <div className="flex flex-col py-12 md:py-20 xl:py-24 gap-8 xl:gap-10 z-20 justify-center items-center">
+        <h1 className="text-white tracking-wider text-5xl md:text-6xl xl:text-7xl font-bold md:max-w-2xl xl:max-w-4xl text-wrap text-center">
+          FIND CLOTHES THAT MATCHES YOUR STYLE
         </h1>
-        <p className="text-white text-lg sm:text-xl xl:text-2xl md:max-w-lg xl:max-w-2xl 2xl:max-w-3xl">
+        <p className="text-white text-lg sm:text-xl xl:text-2xl md:max-w-lg xl:max-w-2xl 2xl:max-w-3xl text-center">
           Browse through our diverse range of meticulously crafted garments,
           designed to bring out your individuality and cater to your sense of
           style.
@@ -68,7 +63,7 @@ const HomeHeroSection = () => {
         >
           Shop Now
         </Button>
-        <div className="flex items-center justify-start">
+        {/* <div className="flex items-center justify-start">
           {reputationFigures.map((figure, index) => (
             <div
               key={index}
@@ -94,7 +89,7 @@ const HomeHeroSection = () => {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import type {Metadata, Viewport} from "next";
+import {Playfair_Display, Jost} from "next/font/google";
 import "./globals.css";
 import {cn} from "@/lib/utils";
 import AnnouncementBar from "@/components/layout/announcement-bar";
@@ -7,6 +8,18 @@ import {ThemeProvider} from "@/providers/theme-provider";
 import Footer from "@/components/layout/footer";
 import {Toaster} from "@/components/ui/sonner";
 import ModalProvider from "@/components/modals/modal-provider";
+
+const playfairDisplay = Playfair_Display({
+    subsets: ["latin"],
+    variable: "--font-playfair",
+    display: "swap",
+});
+
+const jost = Jost({
+    subsets: ["latin"],
+    variable: "--font-jost",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: "MAISHOP",
@@ -64,7 +77,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={cn("h-full antialiased")}
+            className={cn("h-full antialiased", playfairDisplay.variable, jost.variable)}
             suppressHydrationWarning={true}
         >
         <body

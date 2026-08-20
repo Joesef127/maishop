@@ -59,8 +59,8 @@
 }
 
 :root {
-  --font-integral: "Integral CF", "Arial Black", "Segoe UI", sans-serif;
-  --font-satoshi: "Satoshi", Inter, "Segoe UI", sans-serif;
+  --font-integral: var(--font-playfair);
+  --font-satoshi: var(--font-jost);
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -100,9 +100,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-layout: var(--layout-bg);
-  --font-sans: var(--font-satoshi);
-  --font-heading: var(--font-mono);
-  --font-mono: var(--font-mono);
+  --font-sans: var(--font-jost);
+  --font-heading: var(--font-playfair);
+  --font-playfair: var(--font-playfair);
+  --font-jost: var(--font-jost);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -142,7 +143,7 @@
 }
 
 body {
-  font-family: var(--font-satoshi), sans-serif;
+  font-family: var(--font-jost), sans-serif;
 }
 
 h1,
@@ -151,15 +152,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-integral), sans-serif;
+  font-family: var(--font-playfair), serif;
+}
+
+@utility font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+@utility font-jost {
+  font-family: var(--font-jost), sans-serif;
+}
+
+@utility font-heading {
+  font-family: var(--font-playfair), serif;
 }
 
 @utility font-integral {
-  font-family: var(--font-integral), sans-serif;
+  font-family: var(--font-playfair), serif;
 }
 
 @utility font-satoshi {
-  font-family: var(--font-satoshi), sans-serif;
+  font-family: var(--font-jost), sans-serif;
 }
 
 .dark {
@@ -206,9 +219,6 @@ h6 {
   }
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
-  }
-  html {
-    @apply font-mono;
   }
 }
 

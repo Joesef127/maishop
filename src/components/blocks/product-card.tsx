@@ -152,12 +152,12 @@ const ProductCard = (props: ProductCardProps) => {
 
       <div className="flex flex-col justify-between gap-4">
         <div className="flex flex-col gap-2">
-          <Link href={`/shop/${props.id}`} className="text-base sm:text-lg lg:text-xl hover:text-sidebar-primary font-bold capitalize">
-            {title}
+          <Link href={`/shop/${props.id}`} className="text-base sm:text-lg lg:text-xl hover:text-sidebar-primary font-semibold capitalize">
+            <h2>{title}</h2>
           </Link>
 
           <div className="flex flex-wrap items-center gap-3">
-            <p className="text-xs sm:text-sm md:text-lg lg:text-lg font-bold">
+            <p className="text-xs sm:text-sm md:text-lg lg:text-lg font-medium">
               ${price.toFixed(2)}
             </p>
 

@@ -46,9 +46,9 @@ const HomeHeroSection = () => {
 
   return (
     <section className="container">
-      <div className="flex flex-col py-12 md:py-20 xl:py-24 gap-8 xl:gap-10 z-20 justify-center items-center">
+      <div className="flex flex-col mt-20 py-12 md:py-20 xl:py-24 gap-8 xl:gap-10 z-20 justify-center items-center">
         <h1 className="text-white tracking-wider text-5xl md:text-6xl xl:text-7xl font-bold md:max-w-2xl xl:max-w-4xl text-wrap text-center">
-          FIND CLOTHES THAT MATCHES YOUR STYLE
+          FIND <span>CLOTHES</span> THAT MATCHES YOUR STYLE
         </h1>
         <p className="text-white text-lg sm:text-xl xl:text-2xl md:max-w-lg xl:max-w-2xl 2xl:max-w-3xl text-center">
           Browse through our diverse range of meticulously crafted garments,
@@ -59,7 +59,7 @@ const HomeHeroSection = () => {
             onClick={() => router.push("/shop")}
           variant="primary"
           size="custom"
-          className="bg-background text-foreground hover:bg-foreground hover:text-background"
+          className="bg-background text-foreground hover:bg-foreground hover:text-background hover:border-white"
         >
           Shop Now
         </Button>
